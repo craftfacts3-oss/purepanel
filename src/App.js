@@ -308,6 +308,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 const CATS=["All","Peptides","Capsules","Liquids","Nasal Sprays","Topicals","Supplies","Dissolvable Strips"];
 const TEST_STANDARDS=["Identification","Net Purity","Net Quantity","Endotoxins","Sterility","Heavy Metals","Conformity"];
 const PAYMENT_OPTS=["Card","Crypto","Venmo","PayPal","Wire"];
+
+const LABS_DATA=[
+  {id:"afi",name:"AFI",fullName:"Analytical Formulations Lab",website:"analyticalformulations.com",location:"USA",iso:false,badge:"AFI",desc:"Provides supplement analysis in the USA. Confirm analytical scope and contact information directly on their site.",services:["Supplement analysis"],tags:[]},
+  {id:"chromate",name:"Chromate",fullName:"Chromate",website:"chromate.org",location:"USA",iso:false,badge:"CHR",desc:"Offers supplement analysis in the USA using literature-based methods. Publishes results through a public 'Verify' portal — COAs can be looked up directly.",services:["Supplement analysis","Verify portal"],tags:["Verify Portal"]},
+  {id:"eagle",name:"Eagle Analytics",fullName:"Eagle Analytical",website:"eagleanalytical.com",location:"USA",iso:false,badge:"EAG",desc:"Analytical chemistry and microbiological testing, consulting, calibration, certification, and compliance for FDA-regulated and related industries.",services:["Analytical chemistry","Microbiology","FDA compliance"],tags:["FDA Regulated"]},
+  {id:"ethos",name:"Ethos Analytics",fullName:"Ethos Analytics",website:"ethosanalytics.io",location:"Phoenix, AZ",iso:true,badge:"ETH",desc:"ISO 17025 accredited laboratory offering peptide purity and quantitation, nutraceutical and supplement testing, food and beverage, OTC, cosmetics, shelf-life and stability, Amazon compliance, and consulting.",services:["Peptide purity","Peptide quantitation","Supplement testing","Stability","Amazon compliance"],tags:["ISO 17025","Peptide Specialist"]},
+  {id:"freedom",name:"Freedom Diagnostics",fullName:"Freedom Diagnostics Testing",website:"freedomdiagnosticstesting.com",location:"USA",iso:false,badge:"FDT",desc:"Provides high-precision purity testing for research-use-only peptides with online COA lookup. Research-use-only disclaimer applies to all reports.",services:["Purity testing","Online COA lookup"],tags:["Research Use Only","COA Lookup"]},
+  {id:"ils",name:"ILS Labs",fullName:"ILS Laboratories",website:"ilslabs.com",location:"San Diego, CA",iso:true,badge:"ILS",desc:"ISO 17025 accredited. Chemistry and microbiology for supplements and research peptides. Full peptide QC panels including HPLC purity, USP 85-style endotoxin testing, sterility screening, and ICP-MS metals. QR-verified COAs. Typical 3–5 business day turnaround.",services:["HPLC purity","Endotoxins (USP 85)","Sterility screening","ICP-MS heavy metals","QR-verified COAs"],tags:["ISO 17025","QR Verified","3–5 Day TAT"]},
+  {id:"janoshik",name:"Janoshik",fullName:"Janoshik",website:"janoshik.com",location:"International",iso:false,badge:"JAN",desc:"Chemical analysis for peptides, steroids, and pharmaceutical compounds. Digital reporting with account-based access to results. Widely used in the research peptide community.",services:["Peptide analysis","Steroid analysis","Digital COA reporting"],tags:["Widely Used"]},
+  {id:"kovera",name:"Kovera Labs",fullName:"Kovera Labs",website:"koveralabs.com",location:"USA",iso:false,badge:"KOV",desc:"Compound testing and COA verification services. Confirm current service offerings directly on their website.",services:["Compound testing","COA verification"],tags:[]},
+  {id:"mzbio",name:"MZ Biolabs",fullName:"MZ Biolabs",website:"mzbiolabs.com",location:"Tucson, AZ",iso:false,badge:"MZB",desc:"Specialty testing and discovery using mass spectrometry for research, medical, and veterinary markets. Based in Tucson, AZ.",services:["Mass spectrometry","Research peptides","Veterinary testing"],tags:["Mass Spectrometry"]},
+  {id:"vanguard",name:"Vanguard",fullName:"Vanguard Laboratory",website:"vanguardlaboratory.com",location:"USA",iso:true,badge:"VAN",desc:"ISO/IEC 17025 certified. Peptide and research-chemical testing including HPLC purity, quantity, endotoxin, sterility, ICP-MS metals, identity testing, and COA reporting.",services:["HPLC purity","Quantity testing","Endotoxins","Sterility","ICP-MS metals","Identity testing","COA reporting"],tags:["ISO 17025","Full Panel"]},
+];
 const TESTING_OPTS=["7/7 Full","6/7+","3/7+","Any"];
 const PAY_CLASS={Card:"card",Crypto:"crypto",Venmo:"venmo",PayPal:"paypal",Wire:"wire"};
 const CHART_COLORS=["#028391","#faa968","#01204e","#f85525","#f6dcac"];
@@ -1468,6 +1481,35 @@ function VendorStandardsPage(){
         ))}
       </div>
 
+      {/* Labs Directory */}
+      <div style={{background:"#fff",border:"1px solid var(--border2)",borderRadius:"var(--r)",overflow:"hidden",marginBottom:20}}>
+        <div style={{padding:"13px 18px",borderBottom:"1px solid var(--border2)",background:"var(--bg2)",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+          <span style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:14,color:"var(--navy)"}}>Third-Party Testing Laboratories</span>
+          <span style={{fontSize:11,color:"var(--muted2)",fontFamily:"var(--fm)"}}>Labs that appear in vendor COA documentation · ✓ = ISO 17025 accredited</span>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:0}}>
+          {LABS_DATA.map((lab,i)=>(
+            <div key={lab.id} style={{padding:"14px 18px",borderBottom:i<LABS_DATA.length-2?"1px solid var(--border)":"none",borderRight:i%2===0?"1px solid var(--border)":"none",display:"flex",gap:12,alignItems:"flex-start"}}>
+              <div style={{width:36,height:36,borderRadius:8,background:"var(--navy)",display:"flex",alignItems:"center",justifyContent:"center",flexShrink:0}}>
+                <span style={{fontFamily:"var(--fm)",fontWeight:700,fontSize:10,color:"#fff",letterSpacing:.3}}>{lab.badge}</span>
+              </div>
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:3}}>
+                  <span style={{fontFamily:"var(--fh)",fontWeight:700,fontSize:13,color:"var(--navy)"}}>{lab.fullName}</span>
+                  {lab.iso&&<span style={{fontSize:9,fontFamily:"var(--fm)",fontWeight:700,padding:"1px 6px",borderRadius:3,background:"rgba(2,131,145,0.08)",border:"1px solid rgba(2,131,145,0.2)",color:"var(--teal)"}}>ISO 17025</span>}
+                </div>
+                <div style={{fontSize:11,color:"var(--muted2)",marginBottom:4,lineHeight:1.5}}>{lab.desc}</div>
+                <div style={{display:"flex",gap:4,flexWrap:"wrap",alignItems:"center"}}>
+                  <span style={{fontSize:10,color:"var(--muted2)",fontFamily:"var(--fm)"}}>{lab.location}</span>
+                  {lab.tags.map(t=><span key={t} style={{fontSize:9,fontFamily:"var(--fm)",fontWeight:600,padding:"1px 5px",borderRadius:2,background:"rgba(1,32,78,0.05)",color:"var(--navy)"}}>{t}</span>)}
+                  <a href={`https://${lab.website}`} target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:"var(--teal)",fontFamily:"var(--fm)",textDecoration:"none",marginLeft:"auto"}}>{lab.website} ↗</a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Vendor scorecard table */}
       <div style={{background:"#fff",border:"1px solid var(--border2)",borderRadius:"var(--r)",overflow:"hidden"}}>
         <div style={{padding:"13px 18px",borderBottom:"1px solid var(--border2)",background:"var(--bg2)",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
@@ -1519,7 +1561,7 @@ function VendorStandardsPage(){
 }
 
 // ── FILTER DROPDOWN COMPONENT ────────────────────────────────────────────────
-function FilterDropdown({filterTest,setFilterTest,filterPay,togglePay,filterStock,setFilterStock,activeFilters}){
+function FilterDropdown({filterTest,setFilterTest,filterPay,togglePay,filterStock,setFilterStock,filterDiscount,setFilterDiscount,filterShipping,setFilterShipping,filterLab,setFilterLab,activeFilters}){
   const[open,setOpen]=useState(false);
   const ref=useRef();
   useEffect(()=>{
@@ -1527,6 +1569,7 @@ function FilterDropdown({filterTest,setFilterTest,filterPay,togglePay,filterStoc
     document.addEventListener("mousedown",h);
     return()=>document.removeEventListener("mousedown",h);
   },[]);
+  const clearAll=()=>{setFilterTest("Any");setFilterPay&&setFilterPay([]);setFilterStock(false);if(setFilterDiscount)setFilterDiscount(0);if(setFilterShipping)setFilterShipping("Any");if(setFilterLab)setFilterLab("Any");setOpen(false);};
   return(
     <div style={{position:"relative"}} ref={ref}>
       <button onClick={()=>setOpen(o=>!o)}
@@ -1534,37 +1577,60 @@ function FilterDropdown({filterTest,setFilterTest,filterPay,togglePay,filterStoc
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3h12M3 7h8M5 11h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
         Filters
         {activeFilters>0&&<span style={{background:"var(--teal)",color:"#fff",borderRadius:"20px",padding:"1px 7px",fontSize:10,fontFamily:"var(--fm)",fontWeight:700}}>{activeFilters}</span>}
-        <span style={{fontSize:10,color:"var(--muted2)",marginLeft:2}}>{open?"▲":"▼"}</span>
+        <span style={{fontSize:10,color:"rgba(255,255,255,0.5)",marginLeft:2}}>{open?"▲":"▼"}</span>
       </button>
       {open&&(
-        <div style={{position:"absolute",top:"calc(100% + 6px)",left:0,zIndex:300,background:"#fff",border:"1px solid var(--border2)",borderRadius:"var(--r)",padding:"16px 18px",boxShadow:"0 8px 32px rgba(1,32,78,0.12)",minWidth:460,display:"flex",gap:20,flexWrap:"wrap"}}>
-          <div className="fp-group">
+        <div style={{position:"absolute",top:"calc(100% + 8px)",left:0,zIndex:500,background:"#fff",border:"1px solid var(--border2)",borderRadius:12,padding:"18px 20px",boxShadow:"0 12px 40px rgba(1,32,78,0.18)",minWidth:580,display:"grid",gridTemplateColumns:"1fr 1fr",gap:"14px 28px"}}>
+          <div>
             <div className="fp-label">Testing Standard</div>
             <div className="fp-chips">
               {["Any","3/7+","6/7+","7/7 Full"].map(t=>(
-                <button key={t} className={`fchip${t==="7/7 Full"?" g":t==="6/7+"?" w":""} ${filterTest===t?" on":""}`} onClick={()=>setFilterTest(t)}>{t}</button>
+                <button key={t} className={`fchip${filterTest===t?" on":""}`} onClick={()=>setFilterTest(t)}>{t}</button>
               ))}
             </div>
           </div>
-          <div className="fp-group">
+          <div>
             <div className="fp-label">Payment Method</div>
             <div className="fp-chips">
               {PAYMENT_OPTS.map(p=>(
-                <button key={p} className={`fchip ${filterPay.includes(p)?" on":""}`} onClick={()=>togglePay(p)}>{p}</button>
+                <button key={p} className={`fchip${filterPay.includes(p)?" on":""}`} onClick={()=>togglePay(p)}>{p}</button>
               ))}
             </div>
           </div>
-          <div className="fp-group">
+          <div>
             <div className="fp-label">Availability</div>
             <div className="fp-chips">
               <button className={`fchip${filterStock?" on":""}`} onClick={()=>setFilterStock(s=>!s)}>In Stock Only</button>
+              <button className={`fchip${filterShipping==="HasCoupon"?" on":""}`} onClick={()=>setFilterShipping&&setFilterShipping(s=>s==="HasCoupon"?"Any":"HasCoupon")}>Has Coupon</button>
+              <button className={`fchip${filterShipping==="Discounted"?" on":""}`} onClick={()=>setFilterShipping&&setFilterShipping(s=>s==="Discounted"?"Any":"Discounted")}>On Sale</button>
+              <button className={`fchip${filterShipping==="Free"?" on":""}`} onClick={()=>setFilterShipping&&setFilterShipping(s=>s==="Free"?"Any":"Free")}>Free Shipping</button>
+            </div>
+          </div>
+          <div>
+            <div className="fp-label">Minimum Discount</div>
+            <div className="fp-chips">
+              {[[0,"Any"],[5,"5%+"],[10,"10%+"],[20,"20%+"],[30,"30%+"]].map(([val,label])=>(
+                <button key={val} className={`fchip${filterDiscount===val&&val>0?" on":val===0&&filterDiscount===0?" on":""}`} onClick={()=>setFilterDiscount&&setFilterDiscount(filterDiscount===val&&val>0?0:val)}>{label}</button>
+              ))}
+            </div>
+          </div>
+          <div style={{gridColumn:"1/-1"}}>
+            <div className="fp-label">Tested By Lab <span style={{fontSize:9,color:"var(--muted2)",fontWeight:400,marginLeft:4}}>— ✓ = ISO 17025 accredited</span></div>
+            <div className="fp-chips">
+              <button className={`fchip${!filterLab||filterLab==="Any"?" on":""}`} onClick={()=>setFilterLab&&setFilterLab("Any")}>Any Lab</button>
+              {LABS_DATA.map(lab=>(
+                <button key={lab.id} className={`fchip${filterLab===lab.name?" on":""}`}
+                  onClick={()=>setFilterLab&&setFilterLab(filterLab===lab.name?"Any":lab.name)}
+                  title={`${lab.fullName} — ${lab.location}`}>
+                  {lab.iso&&<span style={{color:"var(--teal)",fontSize:9,marginRight:2}}>✓</span>}{lab.name}
+                </button>
+              ))}
             </div>
           </div>
           {activeFilters>0&&(
-            <div style={{width:"100%",borderTop:"1px solid var(--border)",paddingTop:10,marginTop:4}}>
-              <button className="btn btn-ghost btn-sm" style={{color:"var(--orange)",borderColor:"rgba(248,85,37,0.25)"}}
-                onClick={()=>{setFilterTest("Any");setFilterStock(false);setOpen(false);}}>
-                Clear all filters
+            <div style={{gridColumn:"1/-1",borderTop:"1px solid var(--border)",paddingTop:10,marginTop:2}}>
+              <button className="btn btn-ghost btn-sm" style={{color:"var(--orange)",borderColor:"rgba(248,85,37,0.25)"}} onClick={clearAll}>
+                ✕ Clear all filters ({activeFilters})
               </button>
             </div>
           )}
@@ -2302,6 +2368,9 @@ export default function App(){
   const[filterTest,setFilterTest]=useState("Any");
   const[filterPay,setFilterPay]=useState([]);
   const[filterStock,setFilterStock]=useState(false);
+  const[filterDiscount,setFilterDiscount]=useState(0); // minimum discount %
+  const[filterShipping,setFilterShipping]=useState("Any");
+  const[filterLab,setFilterLab]=useState("Any");
   const[showApp,setShowApp]=useState(false);
   const[showGlobalAlert,setShowGlobalAlert]=useState(false);
   const[cartItems,setCartItems]=useState([]);
@@ -2329,6 +2398,14 @@ export default function App(){
       if(filterPay.length>0&&!filterPay.every(fp=>v.payment.includes(fp)))return false;
       // Stock filter
       if(filterStock&&v.stock==="Out of Stock")return false;
+      // Discount filter
+      if(filterDiscount>0&&(v.disc||0)<filterDiscount)return false;
+      // Shipping filter
+      if(filterShipping==="Free"&&!v.shipping?.toLowerCase().includes("free"))return false;
+      if(filterShipping==="HasCoupon"&&!v.coupon)return false;
+      if(filterShipping==="Discounted"&&!(v.disc>0))return false;
+      // Lab filter
+      if(filterLab!=="Any"&&!(v.tests?.labs||[]).some(l=>l.toLowerCase().includes(filterLab.toLowerCase())))return false;
       return true;
     })})).filter(p=>p.vendors.length>0);
     if(sort==="name")out.sort((a,b)=>a.name.localeCompare(b.name));
@@ -2340,7 +2417,7 @@ export default function App(){
   const pending=ADMIN_VENDORS.filter(v=>v.status==="pending").length;
   const cartQty=cartItems.reduce((s,i)=>s+i.qty,0);
   const totalDeals=peptides.reduce((s,p)=>s+p.vendors.filter(v=>v.coupon).length,0);
-  const activeFilters=(filterTest!=="Any"?1:0)+filterPay.length+(filterStock?1:0);
+  const activeFilters=(filterTest!=="Any"?1:0)+filterPay.length+(filterStock?1:0)+(filterDiscount>0?1:0)+(filterShipping!=="Any"?1:0)+(filterLab!=="Any"?1:0);
 
   // Featured deal — best discount across all peptides
   const allVendors=peptides.flatMap(p=>p.vendors.map(v=>({...v,peptideName:p.name})));
@@ -2426,15 +2503,18 @@ export default function App(){
           <div style={{maxWidth:1560,margin:"0 auto",padding:"0 24px"}}>
             <DealCarousel deals={tickerDeals}/>
 
-            {/* FILTER + CATEGORY + VIEW — dark floating card */}
-            <div style={{marginBottom:8,borderRadius:12,overflow:"hidden",background:"rgba(255,255,255,0.07)",border:"1px solid rgba(255,255,255,0.1)",boxShadow:"0 2px 12px rgba(1,32,78,0.18)"}}>
-              <div style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"10px 20px",gap:6,flexWrap:"wrap"}}>
+            {/* FILTER + CATEGORY + VIEW — dark floating card — overflow visible so dropdown isn't cut */}
+            <div style={{marginBottom:8,borderRadius:12,background:"rgba(255,255,255,0.07)",border:"1px solid rgba(255,255,255,0.1)",boxShadow:"0 2px 12px rgba(1,32,78,0.18)"}}>
+              <div style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"10px 20px",gap:6,flexWrap:"wrap",borderRadius:"12px 12px 0 0"}}>
                 {/* Filters button */}
                 <div style={{flexShrink:0}}>
                   <FilterDropdown
                     filterTest={filterTest} setFilterTest={setFilterTest}
                     filterPay={filterPay} togglePay={togglePay}
                     filterStock={filterStock} setFilterStock={setFilterStock}
+                    filterDiscount={filterDiscount} setFilterDiscount={setFilterDiscount}
+                    filterShipping={filterShipping} setFilterShipping={setFilterShipping}
+                    filterLab={filterLab} setFilterLab={setFilterLab}
                     activeFilters={activeFilters}
                   />
                 </div>
@@ -2453,7 +2533,7 @@ export default function App(){
                 </div>
               </div>
               {/* Sort row — centered */}
-              <div style={{borderTop:"1px solid rgba(255,255,255,0.08)",padding:"7px 20px",display:"flex",gap:6,alignItems:"center",justifyContent:"center",flexWrap:"wrap"}}>
+              <div style={{borderTop:"1px solid rgba(255,255,255,0.08)",padding:"7px 20px",display:"flex",gap:6,alignItems:"center",justifyContent:"center",flexWrap:"wrap",borderRadius:"0 0 12px 12px"}}>
                 <span style={{fontSize:10,color:"rgba(255,255,255,0.4)",fontFamily:"var(--fm)",fontWeight:700,letterSpacing:.5}}>SORT:</span>
                 {[["name","Name A–Z"],["name-z","Name Z–A"],["discount","Best Discount"]].map(([k,l])=>(
                   <button key={k} onClick={()=>setSort(k)} style={{padding:"4px 12px",borderRadius:20,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"var(--fh)",transition:"all .12s",background:sort===k?"var(--teal)":"rgba(255,255,255,0.07)",color:sort===k?"#fff":"rgba(255,255,255,0.6)",border:sort===k?"1px solid var(--teal)":"1px solid rgba(255,255,255,0.1)"}}>{l}</button>
@@ -2500,7 +2580,7 @@ export default function App(){
               ?<div style={{textAlign:"center",padding:"60px 20px",color:"rgba(255,255,255,0.5)",fontFamily:"var(--fh)"}}>
                 <div style={{fontSize:34,marginBottom:10}}>🔬</div>
                 <div>No results match your filters.</div>
-                <button className="btn btn-ghost btn-sm" style={{marginTop:10,borderColor:"rgba(255,255,255,0.2)",color:"rgba(255,255,255,0.7)"}} onClick={()=>{setFilterTest("Any");setFilterPay([]);setFilterStock(false);setSearch("");}}>Clear all filters</button>
+                <button className="btn btn-ghost btn-sm" style={{marginTop:10,borderColor:"rgba(255,255,255,0.2)",color:"rgba(255,255,255,0.7)"}} onClick={()=>{setFilterTest("Any");setFilterPay([]);setFilterStock(false);setFilterDiscount(0);setFilterShipping("Any");setSearch("");}}>Clear all filters</button>
               </div>
               : viewMode==="grid"
                 ? <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(380px,1fr))",gap:12,alignItems:"start"}}>
