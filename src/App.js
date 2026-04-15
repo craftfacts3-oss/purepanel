@@ -23,8 +23,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 .nav{display:flex;align-items:center;padding:0 32px;height:56px;background:#fff;border-bottom:1px solid var(--border2);position:sticky;top:0;z-index:200;gap:0;box-shadow:0 1px 3px rgba(1,32,78,0.06)}
 .logo{font-family:var(--fh);font-weight:800;font-size:17px;color:var(--navy);display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0;cursor:pointer;margin-right:36px}
 .logo-mark{font-family:var(--fm);font-size:11px;font-weight:700;color:#fff;background:var(--navy);padding:3px 7px;border-radius:3px;letter-spacing:.5px}
-.logo-pure{color:var(--teal)}
-.logo-rest{color:var(--muted2);font-weight:400}
+.logo-bio{color:var(--teal)}
+.logo-hub{color:var(--muted2);font-weight:400}
 .nav-links{display:flex;gap:0;flex:1;overflow-x:auto}
 .nl{padding:0 16px;height:56px;display:flex;align-items:center;font-size:13px;font-weight:500;cursor:pointer;border:none;background:none;color:var(--muted2);transition:all .12s;font-family:var(--fh);position:relative;white-space:nowrap;flex-shrink:0;border-bottom:2px solid transparent}
 .nl.on{color:var(--teal);border-bottom-color:var(--teal);font-weight:700}
@@ -39,7 +39,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 .btn-xs{padding:3px 9px;font-size:10px;border-radius:var(--r2)}
 .btn-danger{background:var(--orange);color:#fff;border:none}.btn-danger:hover{opacity:.85}
 .btn-warn{background:rgba(248,85,37,0.1);color:var(--orange);border:1px solid rgba(248,85,37,0.3)}
-.page{max-width:1260px;margin:0 auto;padding:24px 32px}
+.page{max-width:1560px;margin:0 auto;padding:24px 32px}
 .page-title{font-family:var(--fh);font-weight:800;font-size:24px;letter-spacing:-.5px;margin-bottom:4px;color:var(--navy)}
 .page-sub{color:var(--muted2);font-size:13px;margin-bottom:22px}
 .hero{padding:48px 32px 36px;border-bottom:1px solid var(--border);background:var(--navy);display:flex;align-items:center;gap:48px;flex-wrap:wrap}
@@ -1033,7 +1033,7 @@ function Cart({items,setItems}){
       <div style={{fontFamily:"var(--fm)",fontWeight:700,fontSize:16,marginBottom:6,color:"var(--text)"}}>Research cart is empty</div>
       <div style={{fontSize:13,color:"var(--muted3)",marginBottom:18}}>Add products from the Compare tab to estimate your research costs.</div>
       <div style={{fontSize:11,color:"var(--muted)",fontFamily:"var(--fm)",background:"var(--bg2)",border:"1px solid var(--border)",borderRadius:"var(--r2)",padding:"10px 16px",display:"inline-block"}}>
-        ℹ PurePanel does not sell products — this is a price estimation tool only.
+        ℹ Biosafe Hub does not sell products — this is a price estimation tool only.
       </div>
     </div>
   );
@@ -1093,7 +1093,7 @@ function Cart({items,setItems}){
         <div style={{display:"flex",justifyContent:"space-between",padding:"5px 0",fontSize:12,fontFamily:"var(--fm)"}}><span style={{color:"var(--muted3)"}}>Shipping</span><span style={{color:"var(--muted)"}}>Varies by vendor</span></div>
         <div style={{display:"flex",justifyContent:"space-between",padding:"12px 0 5px",fontSize:17,fontFamily:"var(--fm)",fontWeight:700,borderTop:"1px solid var(--border)",marginTop:8,color:"var(--accent)"}}><span>Estimated Total</span><span>${sub.toFixed(2)}</span></div>
         <div style={{fontSize:10,color:"var(--muted)",textAlign:"center",marginTop:12,lineHeight:1.6,fontFamily:"var(--fb)"}}>
-          PurePanel does not sell products. Visit each vendor's website to complete your purchase.<br/>
+          Biosafe Hub does not sell products. Visit each vendor's website to complete your purchase.<br/>
           Prices shown are estimates and may not reflect current vendor promotions.
         </div>
         <div style={{display:"flex",gap:8,marginTop:14,justifyContent:"center",flexWrap:"wrap"}}>
@@ -1328,7 +1328,7 @@ const INIT_STAGES=[
 
 const INIT_RESULT={
   title:"THE RESULT:",
-  body:"Every vendor on PurePanel meets verified testing standards — not just competitive pricing.",
+  body:"Every vendor on Biosafe Hub meets verified testing standards — not just competitive pricing.",
   sub:"Current testing. Real accountability. Better decisions.",
 };
 
@@ -1738,11 +1738,12 @@ function CMS({vendors,setVendors,peptides,setPeptides,onExit}){
 
   return(
     <div style={{minHeight:"100vh",background:"var(--bg)"}}>
+      <style>{css}</style>
       {toast&&<div className="toast">{toast}</div>}
       {/* CMS nav */}
       <div style={{background:"var(--bg2)",borderBottom:"1px solid var(--border2)",padding:"0 24px",height:54,display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,zIndex:200}}>
         <div style={{display:"flex",alignItems:"center",gap:12}}>
-          <div className="logo"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7a1a00"/><path d="M12 6h8v8l4.5 8.5A2 2 0 0122.7 26H9.3a2 2 0 01-1.8-2.5L12 14V6z" fill="none" stroke="#f85525" strokeWidth="1.5" strokeLinejoin="round"/><line x1="11" y1="6" x2="21" y2="6" stroke="#f85525" strokeWidth="1.8" strokeLinecap="round"/><path d="M10.5 20.5l1.5-2.5h8l2.5 5A1.8 1.8 0 0121 26H11a1.8 1.8 0 01-1.7-2.3l1.2-3.2z" fill="#f85525" opacity="0.35"/><circle cx="19" cy="22" r="2" fill="#faa968"/><circle cx="14" cy="23.5" r="1.3" fill="#faa968" opacity="0.8"/></svg><span style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:17,letterSpacing:"-.4px"}}><span className="logo-pure">Pure</span>Panel</span><span style={{fontSize:11,color:"var(--bad)",fontFamily:"var(--fm)",fontWeight:700,marginLeft:6}}>ADMIN</span></div>
+          <div className="logo"><svg width="32" height="32" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" rx="18" fill="#01204e"/><ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="#028391" strokeWidth="2" opacity="0.9"/><ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="#028391" strokeWidth="2" opacity="0.9" transform="rotate(60 50 50)"/><ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="#028391" strokeWidth="2" opacity="0.9" transform="rotate(120 50 50)"/><circle cx="50" cy="50" r="8" fill="#028391"/><circle cx="50" cy="50" r="4.5" fill="#f6dcac"/><circle cx="84" cy="50" r="4.5" fill="#faa968"/><circle cx="33" cy="21" r="4.5" fill="#faa968"/><circle cx="33" cy="79" r="4.5" fill="#faa968"/></svg><span style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:17,letterSpacing:"-.4px"}}><span className="logo-bio">Biosafe</span><span className="logo-hub"> Hub</span></span><span style={{fontSize:11,color:"var(--bad)",fontFamily:"var(--fm)",fontWeight:700,marginLeft:6}}>ADMIN</span></div>
         </div>
         <div style={{display:"flex",gap:2,background:"rgba(255,255,255,0.04)",border:"1px solid var(--border)",borderRadius:"var(--r2)",padding:3}}>
           {[["vendors","Vendors"],["peptides","Peptides & Prices"],["promos","Promotions"],["standards","Testing Page"],["apps","Applications"]].map(([k,l])=>(
@@ -1920,29 +1921,22 @@ function CMS({vendors,setVendors,peptides,setPeptides,onExit}){
 
         {/* ── STANDARDS CMS TAB ── */}
         {cmsTab==="standards"&&(
-          <div>
-            <div className="page-title">Testing Page Content</div>
-            <div className="page-sub">Edit the 5-stage process content and the result block. Changes reflect live on the Standards page.</div>
-            <div style={{background:"var(--bg3)",border:"1px solid var(--border2)",borderRadius:"var(--r2)",padding:14,marginBottom:16,fontSize:12,color:"var(--muted3)"}}>
-              💡 You can also edit the Standards page directly by visiting the Standards tab and clicking <strong style={{color:"var(--accent)"}}>✎ Edit Page</strong> in the top-right corner.
-            </div>
-            <div style={{display:"flex",flexDirection:"column",gap:10}}>
-              {INIT_STAGES.map((stage)=>(
-                <div key={stage.id} style={{background:"var(--bg2)",border:"1px solid var(--border)",borderRadius:"var(--r)",overflow:"hidden"}}>
-                  <div style={{background:`linear-gradient(135deg,${stage.accentFrom},${stage.accentTo})`,padding:"10px 16px",fontFamily:"var(--fm)",fontWeight:700,fontSize:13,color:"#fff"}}>{stage.label}</div>
-                  <div style={{padding:14}}>
-                    <div style={{fontSize:11,color:"var(--muted3)",marginBottom:8}}>Points (editable on the Standards page directly)</div>
-                    {stage.points.map((pt,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:8,marginBottom:5,fontSize:12,color:"var(--muted2)"}}><span style={{color:stage.accentTo,fontSize:10}}>●</span>{pt}</div>)}
-                  </div>
+          <div style={{maxWidth:560,margin:"0 auto",paddingTop:40,textAlign:"center"}}>
+            <div style={{fontSize:40,marginBottom:16}}>🧪</div>
+            <div className="page-title" style={{marginBottom:8}}>Testing Page</div>
+            <div className="page-sub" style={{marginBottom:24}}>The Testing page content is managed directly on the live site — no CMS editing needed here.</div>
+            <div style={{background:"rgba(2,131,145,0.05)",border:"1px solid rgba(2,131,145,0.2)",borderRadius:"var(--r)",padding:"20px 24px",textAlign:"left"}}>
+              <div style={{fontFamily:"var(--fh)",fontWeight:700,fontSize:13,color:"var(--navy)",marginBottom:12}}>What's on the Testing page:</div>
+              {["7-point testing framework with descriptions","Vendor scorecard table with ✓/✗ for each standard","Stats showing average scores across all vendors"].map((item,i)=>(
+                <div key={i} style={{display:"flex",gap:10,fontSize:13,color:"var(--muted2)",marginBottom:8}}>
+                  <span style={{color:"var(--teal)",fontFamily:"var(--fm)"}}>✓</span>{item}
                 </div>
               ))}
             </div>
-            <div style={{marginTop:16,background:"var(--bg2)",border:"1px solid var(--border)",borderRadius:"var(--r)",padding:16}}>
-              <div style={{fontFamily:"var(--fm)",fontWeight:700,fontSize:13,marginBottom:8}}>Result Block</div>
-              <div style={{fontSize:12,color:"var(--muted3)"}}>Title: <strong style={{color:"var(--text)"}}>{INIT_RESULT.title}</strong></div>
-              <div style={{fontSize:12,color:"var(--muted3)",marginTop:4}}>Body: {INIT_RESULT.body}</div>
-              <div style={{fontSize:12,color:"var(--muted3)",marginTop:4}}>Sub: {INIT_RESULT.sub}</div>
+            <div style={{marginTop:20,padding:"14px 18px",background:"rgba(250,169,104,0.08)",border:"1px solid rgba(250,169,104,0.25)",borderRadius:"var(--r)",fontSize:13,color:"var(--navy)"}}>
+              💡 To update vendor test scores, go to the <strong>Vendors tab</strong> and edit the Testing score field for each vendor.
             </div>
+            <button className="btn btn-cyan" style={{marginTop:24}} onClick={onExit}>← Go to Testing Page</button>
           </div>
         )}
       </div>
@@ -2023,22 +2017,20 @@ export default function App(){
 
       <nav className="nav">
         <div className="logo" onClick={()=>{if(window._ppClickCount===undefined)window._ppClickCount=0;window._ppClickCount++;if(window._ppClickCount>=5){window._ppClickCount=0;setAdminMode(true);}setTimeout(()=>{if(window._ppClickCount<5)window._ppClickCount=0;},3000);}}>
-          {/* PurePanel Logo Mark — stylized flask/vial with molecule dot */}
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* Background rounded square */}
-            <rect width="32" height="32" rx="8" fill="#01204e"/>
-            {/* Flask body */}
-            <path d="M12 6h8v8l4.5 8.5A2 2 0 0122.7 26H9.3a2 2 0 01-1.8-2.5L12 14V6z" fill="none" stroke="#028391" strokeWidth="1.5" strokeLinejoin="round"/>
-            {/* Flask neck top line */}
-            <line x1="11" y1="6" x2="21" y2="6" stroke="#028391" strokeWidth="1.8" strokeLinecap="round"/>
-            {/* Liquid fill inside flask */}
-            <path d="M10.5 20.5l1.5-2.5h8l2.5 5A1.8 1.8 0 0121 26H11a1.8 1.8 0 01-1.7-2.3l1.2-3.2z" fill="#028391" opacity="0.35"/>
-            {/* Molecule dot - accent highlight */}
-            <circle cx="19" cy="22" r="2" fill="#f6dcac"/>
-            <circle cx="14" cy="23.5" r="1.3" fill="#faa968" opacity="0.8"/>
+          {/* Biosafe Hub Logo — atom/molecule mark */}
+          <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="100" height="100" rx="18" fill="#01204e"/>
+            <ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="#028391" strokeWidth="2" opacity="0.9"/>
+            <ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="#028391" strokeWidth="2" opacity="0.9" transform="rotate(60 50 50)"/>
+            <ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="#028391" strokeWidth="2" opacity="0.9" transform="rotate(120 50 50)"/>
+            <circle cx="50" cy="50" r="8" fill="#028391"/>
+            <circle cx="50" cy="50" r="4.5" fill="#f6dcac"/>
+            <circle cx="84" cy="50" r="4.5" fill="#faa968"/>
+            <circle cx="33" cy="21" r="4.5" fill="#faa968"/>
+            <circle cx="33" cy="79" r="4.5" fill="#faa968"/>
           </svg>
           <span style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:17,letterSpacing:"-.4px"}}>
-            <span className="logo-pure">Pure</span><span className="logo-rest">Panel</span>
+            <span className="logo-bio">Biosafe</span><span className="logo-hub"> Hub</span>
           </span>
         </div>
         <div className="nav-links">
@@ -2158,7 +2150,7 @@ export default function App(){
             {filtered.length===0
               ?<div className="empty"><div style={{fontSize:34,marginBottom:10}}>🔬</div><div>No results match your filters.</div><button className="btn btn-ghost btn-sm" style={{marginTop:10}} onClick={()=>{setFilterTest("Any");setFilterPay([]);setFilterStock(false);setSearch("");}}>Clear all filters</button></div>
               : viewMode==="grid"
-                ? <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:12,alignItems:"start"}}>
+                ? <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(380px,1fr))",gap:12,alignItems:"start"}}>
                     {filtered.map(p=><PeptideGroup key={p.id} p={p} onAddCart={addToCart} showToast={showToast} isGridView={true}/>)}
                   </div>
                 : filtered.map(p=><PeptideGroup key={p.id} p={p} onAddCart={addToCart} showToast={showToast} isGridView={false}/>)
