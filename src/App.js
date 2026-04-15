@@ -42,7 +42,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 .page{max-width:1560px;margin:0 auto;padding:24px 32px}
 .page-title{font-family:var(--fh);font-weight:800;font-size:24px;letter-spacing:-.5px;margin-bottom:4px;color:var(--navy)}
 .page-sub{color:var(--muted2);font-size:13px;margin-bottom:22px}
-.hero{padding:48px 32px 36px;border-bottom:1px solid var(--border);background:var(--navy);display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+.hero{padding:48px 64px 36px;border-bottom:none;background:var(--navy);display:flex;align-items:center;gap:48px;flex-wrap:wrap}
 .hero-left{flex:1;min-width:300px}
 .hero-eyebrow{font-family:var(--fm);font-size:10px;font-weight:500;color:var(--peach);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .hero-eyebrow::after{content:'';flex:0 0 32px;height:1px;background:rgba(250,169,104,0.4)}
@@ -55,7 +55,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 .hero-search input::placeholder{color:rgba(255,255,255,0.35)}
 .hs-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.5);font-size:14px;pointer-events:none}
 .hero-right{display:flex;flex-direction:column;gap:8px;min-width:200px}
-.hero-stat-pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:var(--r);padding:10px 14px;display:flex;align-items:center;gap:10px}
+.hero-stat-pill{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 18px;display:flex;align-items:center;gap:10px}
 .hsp-val{font-family:var(--fm);font-weight:700;font-size:20px;color:var(--peach)}
 .hsp-lbl{font-size:11px;color:rgba(255,255,255,0.55)}
 .deal-ticker{background:var(--teal);border-bottom:none;padding:10px 0;display:flex;align-items:center;gap:0;overflow:hidden;border-radius:0}
@@ -81,8 +81,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 .vr-big-price{font-family:var(--fh);font-weight:800;font-size:22px;color:var(--teal)}
 
 .cat-bar{display:flex;gap:0;padding:0;background:transparent;border-bottom:none;overflow-x:auto}
-.cc{padding:0 14px;height:46px;display:flex;align-items:center;font-size:12px;font-weight:600;cursor:pointer;border:none;border-bottom:2px solid transparent;background:none;color:var(--muted2);transition:all .12s;font-family:var(--fh);white-space:nowrap}
-.cc.on{color:var(--teal);border-bottom-color:var(--teal);font-weight:700}
+.cc{padding:5px 14px;height:auto;display:inline-flex;align-items:center;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.1);border-radius:20px;background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.65);transition:all .14s;font-family:var(--fh);white-space:nowrap;margin:0 3px}
+.cc.on{color:#fff;background:var(--teal);border-color:var(--teal);font-weight:700}
 .cc:hover:not(.on){color:var(--navy)}
 .filter-panel{background:var(--bg2);border-bottom:1px solid var(--border2);padding:10px 32px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap}
 .fp-group{display:flex;flex-direction:column;gap:5px}
@@ -94,7 +94,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 .fchip.g.on{background:rgba(2,131,145,0.08);border-color:rgba(2,131,145,0.35);color:var(--teal)}
 .fchip.w.on{background:rgba(250,169,104,0.1);border-color:rgba(250,169,104,0.4);color:#b86a10}
 .fchip.r.on{background:rgba(248,85,37,0.08);border-color:rgba(248,85,37,0.3);color:var(--orange)}
-.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:9px 32px;border-bottom:1px solid var(--border2);background:#fff}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:9px 24px;border-bottom:1px solid var(--border2);background:#fff}
 .sort-btn{padding:5px 12px;border-radius:var(--r2);font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border2);background:#fff;color:var(--muted2);font-family:var(--fh);transition:all .12s}
 .sort-btn.on{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:700}
 .sort-btn:hover:not(.on){border-color:var(--teal);color:var(--teal)}
@@ -181,7 +181,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14px
 .am-input:focus{border-top-color:var(--teal)}
 .am-input::placeholder{color:var(--muted)}
 .am-note{font-size:10px;color:var(--muted2);margin-top:8px;font-family:var(--fm);line-height:1.5}
-.featured-deal{background:var(--navy);border-radius:var(--r);padding:16px 20px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.featured-deal{background:var(--navy);border-radius:14px;padding:18px 24px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .fd-tag{font-family:var(--fm);font-size:9px;font-weight:700;color:var(--cream);border:1px solid rgba(246,220,172,0.3);border-radius:var(--r2);padding:2px 7px;letter-spacing:.5px;background:rgba(246,220,172,0.1);margin-bottom:5px;display:inline-block}
 .fd-name{font-family:var(--fh);font-weight:800;font-size:15px;color:#fff}
 .fd-detail{font-size:12px;color:rgba(255,255,255,0.55);margin-top:2px}
@@ -330,7 +330,7 @@ const makeHistory=(base,vendors)=>vendors.map((v,vi)=>{
 
 const PEPTIDES_DATA=[
   {id:1,name:"5-AMINO-1MQ",category:"Peptides",
-   doses:["5mg","10mg","20mg","30mg","50mg★","60mg","50mg Trio","50mg Half Kit","50mg Kit"],defaultDose:"5mg",
+   doses:["5mg","10mg","20mg","30mg","50mg","60mg","50mg Trio","50mg Half Kit","50mg Kit"],defaultDose:"5mg",
    vendors:[
      {id:1,name:"FelixChem",stock:"In Stock",price:31.49,origPrice:34.99,disc:10,ppm:6.30,coupon:"derek",couponDesc:"10% off",shipping:"2–4 days",payment:["Crypto","Wire"],tests:{pass:["Identification","Net Purity","Net Quantity"],fail:["Endotoxins","Sterility","Heavy Metals","Conformity"],labs:["Chromate","Freedom Diagnostics"],note:"Multiple labs — COA depends on batch."}},
      {id:2,name:"Ion Peptide",stock:"In Stock",price:31.50,origPrice:35.00,disc:10,ppm:6.30,coupon:"peptideprice",couponDesc:"10% off",shipping:"1–3 days",payment:["Card","Crypto","Venmo"],tests:{pass:["Identification","Net Purity","Net Quantity","Endotoxins","Sterility","Heavy Metals"],fail:["Conformity"],labs:["Chromate"],note:"Batch-tested on most products."}},
@@ -414,128 +414,183 @@ function TestPopup({vendor,onClose}){
 
 // ── PRICE HISTORY MODAL ──────────────────────────────────────────────────────
 function PriceHistoryModal({peptide,onClose}){
-  const W=580,H=180,pad={t:14,r:70,b:32,l:48};
-  const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
-  const allPrices=peptide.history.flatMap(h=>h.points);
-  const minP=Math.min(...allPrices)*.96, maxP=Math.max(...allPrices)*1.04;
-  const xScale=(i)=>pad.l+(i/(MONTHS.length-1))*cW;
-  const yScale=(v)=>pad.t+cH-(((v-minP)/(maxP-minP))*cH);
+  const[activeTab,setActiveTab]=useState("chart");
+  const[viewMode,setViewMode]=useState("total"); // total | perm
+  const[withCodes,setWithCodes]=useState(false);
+  const[activeDose,setActiveDose]=useState(peptide.defaultDose||peptide.doses?.[0]||"");
+  const[activeVendors,setActiveVendors]=useState(()=>new Set(peptide.history.map(h=>h.vendor)));
+  const[animated,setAnimated]=useState(false);
 
-  // Average across all vendors per month
+  useEffect(()=>{setTimeout(()=>setAnimated(true),80);},[]);
+
+  const CHART_COLORS_VIVID=["#00d4ff","#00ff9d","#ffd166","#b388ff","#ff6b35","#ff4df5","#69ff47","#ffa07a","#00bfff","#ffec00"];
+  const visibleHistory=peptide.history.filter(h=>activeVendors.has(h.vendor));
+  const allPrices=visibleHistory.flatMap(h=>h.points);
+  const minP=allPrices.length?Math.min(...allPrices)*.94:0;
+  const maxP=allPrices.length?Math.max(...allPrices)*1.06:100;
+  const lowestPrice=allPrices.length?Math.min(...allPrices):0;
+  const highestPrice=allPrices.length?Math.max(...allPrices):0;
+  const avgPrice=allPrices.length?(allPrices.reduce((a,b)=>a+b,0)/allPrices.length):0;
+
+  const W=700,H=260,pad={t:20,r:20,b:36,l:52};
+  const cW=W-pad.l-pad.r, cH=H-pad.t-pad.b;
+  const xScale=(i)=>pad.l+(i/(MONTHS.length-1))*cW;
+  const yScale=(v)=>pad.t+cH-(((v-minP)/(maxP-minP||1))*cH);
   const avgPoints=MONTHS.map((_,mi)=>{
-    const vals=peptide.history.map(h=>h.points[mi]);
-    return vals.reduce((a,b)=>a+b,0)/vals.length;
+    const vals=visibleHistory.map(h=>h.points[mi]).filter(Boolean);
+    return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:0;
   });
 
-  // Site-palette chart colors
-  const SITE_COLORS=["#028391","#faa968","#01204e","#f85525","#f6dcac"];
+  const toggleVendor=(v)=>setActiveVendors(prev=>{
+    const n=new Set(prev);
+    n.has(v)?n.delete(v):n.add(v);
+    return n;
+  });
 
   return(
     <div className="overlay" onClick={e=>e.target===e.currentTarget&&onClose()}>
-      <div className="ph-modal">
-        <div className="ph-title">
-          <span>{peptide.name} — 6-Month Price History</span>
-          <button onClick={onClose} style={{background:"none",border:"none",color:"var(--muted2)",cursor:"pointer",fontSize:18,lineHeight:1,fontWeight:300}}>×</button>
+      <div style={{background:"#0d1b2e",border:"1px solid rgba(255,255,255,0.1)",borderRadius:16,padding:"22px 24px",maxWidth:780,width:"100%",maxHeight:"88vh",overflowY:"auto",boxShadow:"0 24px 64px rgba(0,0,0,0.5)"}}>
+
+        {/* Header */}
+        <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:16}}>
+          <div>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
+              <span style={{color:"var(--teal)",fontSize:14}}>📈</span>
+              <span style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:18,color:"#fff"}}>{peptide.name}</span>
+            </div>
+            <div style={{fontSize:11,color:"rgba(255,255,255,0.45)",fontFamily:"var(--fm)"}}>{activeDose} · Price History · <span style={{color:"var(--teal)",cursor:"pointer"}} onClick={()=>setWithCodes(w=>!w)}>{withCodes?"With Codes ✓":"Show Codes"}</span></div>
+          </div>
+          <button onClick={onClose} style={{background:"rgba(255,255,255,0.08)",border:"1px solid rgba(255,255,255,0.12)",color:"rgba(255,255,255,0.6)",cursor:"pointer",fontSize:16,width:32,height:32,borderRadius:8,display:"flex",alignItems:"center",justifyContent:"center"}}>×</button>
         </div>
 
-        <div className="chart-area" style={{height:H}}>
-          <svg className="chart-svg" viewBox={`0 0 ${W} ${H}`}>
-            {/* Horizontal grid lines + Y-axis labels */}
-            {[0,.25,.5,.75,1].map(t=>{
-              const y=pad.t+t*cH;
-              const val=(maxP-(t*(maxP-minP))).toFixed(0);
-              return(
-                <g key={t}>
-                  <line x1={pad.l} y1={y} x2={W-pad.r} y2={y} stroke="rgba(1,32,78,0.08)" strokeWidth="1" strokeDasharray={t===0||t===1?"0":"4 3"}/>
-                  <text x={pad.l-6} y={y+4} textAnchor="end" fill="rgba(1,32,78,0.4)" fontSize="10" fontFamily="JetBrains Mono, monospace">${val}</text>
-                </g>
-              );
-            })}
-            {/* Month labels */}
-            {MONTHS.map((m,i)=>(
-              <text key={m} x={xScale(i)} y={H-6} textAnchor="middle" fill="rgba(1,32,78,0.45)" fontSize="10" fontFamily="JetBrains Mono, monospace">{m}</text>
+        {/* Tab bar */}
+        <div style={{display:"flex",gap:4,marginBottom:16,flexWrap:"wrap"}}>
+          {[["chart","📊 Chart"],["table","☰ Row Data"]].map(([k,l])=>(
+            <button key={k} onClick={()=>setActiveTab(k)} style={{padding:"5px 14px",borderRadius:8,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"var(--fh)",background:activeTab===k?"var(--teal)":"rgba(255,255,255,0.07)",color:activeTab===k?"#fff":"rgba(255,255,255,0.55)",border:activeTab===k?"1px solid var(--teal)":"1px solid rgba(255,255,255,0.1)",transition:"all .12s"}}>{l}</button>
+          ))}
+          <button onClick={()=>setViewMode(v=>v==="total"?"perm":"total")} style={{padding:"5px 14px",borderRadius:8,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"var(--fh)",background:viewMode==="perm"?"rgba(250,169,104,0.2)":"rgba(255,255,255,0.07)",color:viewMode==="perm"?"var(--peach)":"rgba(255,255,255,0.55)",border:"1px solid rgba(255,255,255,0.1)"}}>💲{viewMode==="perm"?"Per mg":"Total"}</button>
+          <button onClick={()=>setWithCodes(w=>!w)} style={{padding:"5px 14px",borderRadius:8,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"var(--fh)",background:withCodes?"rgba(0,212,255,0.15)":"rgba(255,255,255,0.07)",color:withCodes?"#00d4ff":"rgba(255,255,255,0.55)",border:"1px solid rgba(255,255,255,0.1)"}}>🏷 With Codes</button>
+        </div>
+
+        {/* Dose tabs */}
+        {peptide.doses&&(
+          <div style={{display:"flex",gap:4,flexWrap:"wrap",marginBottom:16}}>
+            {peptide.doses.map(d=>(
+              <button key={d} onClick={()=>setActiveDose(d)} style={{padding:"4px 12px",borderRadius:6,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"var(--fm)",background:activeDose===d?"var(--navy)":"rgba(255,255,255,0.06)",color:activeDose===d?"#fff":"rgba(255,255,255,0.5)",border:activeDose===d?"1px solid var(--teal)":"1px solid rgba(255,255,255,0.08)"}}>{d}</button>
             ))}
+          </div>
+        )}
 
-            {/* Average line — dashed navy */}
-            <polyline
-              points={avgPoints.map((p,i)=>`${xScale(i)},${yScale(p)}`).join(" ")}
-              fill="none" stroke="rgba(1,32,78,0.25)" strokeWidth="1.5" strokeDasharray="6 3" strokeLinejoin="round"
-            />
-
-            {/* Vendor lines */}
-            {peptide.history.map((h,vi)=>{
-              const col=SITE_COLORS[vi%SITE_COLORS.length];
-              const pts=h.points.map((p,i)=>`${xScale(i)},${yScale(p)}`).join(" ");
-              const lastX=xScale(MONTHS.length-1);
-              const lastY=yScale(h.points[h.points.length-1]);
-              const lastVal=h.points[h.points.length-1];
-              return(
-                <g key={vi}>
-                  {/* Line */}
-                  <polyline points={pts} fill="none" stroke={col} strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round"/>
-                  {/* Dots at each point */}
-                  {h.points.map((p,i)=>(
-                    <circle key={i} cx={xScale(i)} cy={yScale(p)} r="3.5" fill={col} stroke="#fff" strokeWidth="1.5"/>
-                  ))}
-                  {/* End-of-line price label on the right */}
-                  <text x={lastX+8} y={lastY+4} fill={col} fontSize="11" fontFamily="JetBrains Mono, monospace" fontWeight="700">${lastVal.toFixed(0)}</text>
-                </g>
-              );
-            })}
-
-            {/* Average end label */}
-            <text x={xScale(MONTHS.length-1)+8} y={yScale(avgPoints[avgPoints.length-1])+4} fill="rgba(1,32,78,0.4)" fontSize="10" fontFamily="JetBrains Mono, monospace">avg</text>
-          </svg>
-        </div>
-
-        {/* Legend */}
-        <div className="chart-legend" style={{marginBottom:14}}>
-          {peptide.history.map((h,vi)=>(
-            <div key={vi} className="cl-item">
-              <div className="cl-dot" style={{background:SITE_COLORS[vi%SITE_COLORS.length]}}/>
-              <span style={{fontWeight:600,color:"var(--navy)"}}>{h.vendor}</span>
-              <span style={{color:"var(--muted2)"}}>(cur: ${h.points[h.points.length-1].toFixed(2)})</span>
+        {/* Stats row */}
+        <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8,marginBottom:16}}>
+          {[["Lowest",`$${lowestPrice.toFixed(2)}`,`rgba(0,255,157,0.08)`,`rgba(0,255,157,0.3)`,"#00ff9d"],["Average",`$${avgPrice.toFixed(2)}`,`rgba(0,212,255,0.08)`,`rgba(0,212,255,0.3)`,"#00d4ff"],["Highest",`$${highestPrice.toFixed(2)}`,`rgba(255,100,100,0.08)`,`rgba(255,100,100,0.3)`,"#ff6464"],["Retailers",peptide.history.length,`rgba(255,255,255,0.05)`,`rgba(255,255,255,0.12)`,"rgba(255,255,255,0.7)"]].map(([label,val,bg,bdr,clr])=>(
+            <div key={label} style={{background:bg,border:`1px solid ${bdr}`,borderRadius:10,padding:"10px 14px"}}>
+              <div style={{fontSize:10,fontFamily:"var(--fm)",color:"rgba(255,255,255,0.4)",textTransform:"uppercase",letterSpacing:.8,marginBottom:4}}>{label}</div>
+              <div style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:20,color:clr}}>{val}</div>
             </div>
           ))}
-          <div className="cl-item">
-            <div style={{width:16,height:2,background:"rgba(1,32,78,0.3)",borderTop:"2px dashed rgba(1,32,78,0.3)",marginRight:4}}/>
-            <span style={{color:"var(--muted2)"}}>Avg: ${(avgPoints[avgPoints.length-1]).toFixed(2)}</span>
-          </div>
         </div>
 
-        {/* Price table */}
-        <table className="price-table">
-          <thead>
-            <tr>
-              <th>Vendor</th>
-              {MONTHS.map(m=><th key={m}>{m}</th>)}
-              <th>Avg</th>
-              <th>Trend</th>
-            </tr>
-          </thead>
-          <tbody>
-            {peptide.history.map((h,vi)=>{
-              const first=h.points[0],last=h.points[h.points.length-1];
-              const chg=((last-first)/first*100).toFixed(1);
-              const avg=(h.points.reduce((a,b)=>a+b,0)/h.points.length).toFixed(2);
-              return(
-                <tr key={vi}>
-                  <td style={{color:SITE_COLORS[vi%SITE_COLORS.length],fontWeight:700}}>{h.vendor}</td>
-                  {h.points.map((p,i)=><td key={i}>${p.toFixed(2)}</td>)}
-                  <td style={{color:"var(--muted2)",fontWeight:600}}>${avg}</td>
-                  <td style={{color:parseFloat(chg)<0?"var(--teal)":"var(--orange)",fontWeight:700}}>{chg>0?"+":""}{chg}%</td>
+        {activeTab==="chart"&&(
+          <div style={{background:"rgba(0,0,0,0.2)",borderRadius:12,padding:"12px 8px 4px",marginBottom:12,border:"1px solid rgba(255,255,255,0.06)"}}>
+            <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{overflow:"visible"}}>
+              {/* Grid lines */}
+              {[0,.25,.5,.75,1].map(t=>{
+                const y=pad.t+t*cH;
+                const val=(maxP-(t*(maxP-minP))).toFixed(0);
+                return(
+                  <g key={t}>
+                    <line x1={pad.l} y1={y} x2={W-pad.r} y2={y} stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray={t===0||t===1?"0":"4 3"}/>
+                    <text x={pad.l-6} y={y+4} textAnchor="end" fill="rgba(255,255,255,0.3)" fontSize="10" fontFamily="JetBrains Mono,monospace">${val}</text>
+                  </g>
+                );
+              })}
+              {/* Month labels */}
+              {MONTHS.map((m,i)=>(
+                <text key={m} x={xScale(i)} y={H-6} textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="10" fontFamily="JetBrains Mono,monospace">{m}</text>
+              ))}
+              {/* Average dashed line */}
+              <polyline points={avgPoints.map((p,i)=>`${xScale(i)},${yScale(p)}`).join(" ")} fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeDasharray="6 3"/>
+
+              {/* Vendor lines — animated */}
+              {visibleHistory.map((h,vi)=>{
+                const col=CHART_COLORS_VIVID[vi%CHART_COLORS_VIVID.length];
+                const pts=h.points.map((p,i)=>`${xScale(i)},${yScale(p)}`).join(" ");
+                const totalLen=h.points.reduce((acc,_,i)=>i===0?0:acc+Math.sqrt(Math.pow(xScale(i)-xScale(i-1),2)+Math.pow(yScale(h.points[i])-yScale(h.points[i-1]),2)),0)*1.2+200;
+                return(
+                  <g key={vi}>
+                    <polyline points={pts} fill="none" stroke={col} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round"
+                      style={{strokeDasharray:totalLen,strokeDashoffset:animated?0:totalLen,transition:`stroke-dashoffset ${0.8+vi*0.15}s cubic-bezier(.4,0,.2,1)`}}/>
+                    {h.points.map((p,i)=>(
+                      <circle key={i} cx={xScale(i)} cy={yScale(p)} r="3.5" fill={col} stroke="#0d1b2e" strokeWidth="2"
+                        style={{opacity:animated?1:0,transition:`opacity .3s ${0.8+vi*0.15}s`}}/>
+                    ))}
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+        )}
+
+        {activeTab==="table"&&(
+          <div style={{background:"rgba(0,0,0,0.2)",borderRadius:12,overflow:"hidden",marginBottom:12,border:"1px solid rgba(255,255,255,0.06)"}}>
+            <table style={{width:"100%",borderCollapse:"collapse"}}>
+              <thead>
+                <tr style={{background:"rgba(255,255,255,0.04)"}}>
+                  <th style={{fontFamily:"var(--fm)",fontSize:10,color:"rgba(255,255,255,0.4)",padding:"8px 12px",textAlign:"left",textTransform:"uppercase",letterSpacing:.8}}>Vendor</th>
+                  {MONTHS.map(m=><th key={m} style={{fontFamily:"var(--fm)",fontSize:10,color:"rgba(255,255,255,0.4)",padding:"8px 8px",textAlign:"center",textTransform:"uppercase",letterSpacing:.8}}>{m}</th>)}
+                  <th style={{fontFamily:"var(--fm)",fontSize:10,color:"rgba(255,255,255,0.4)",padding:"8px 12px",textAlign:"right",textTransform:"uppercase",letterSpacing:.8}}>Avg</th>
+                  <th style={{fontFamily:"var(--fm)",fontSize:10,color:"rgba(255,255,255,0.4)",padding:"8px 12px",textAlign:"right",textTransform:"uppercase",letterSpacing:.8}}>Trend</th>
                 </tr>
-              );
-            })}
-            {/* Average row */}
-            <tr style={{background:"rgba(1,32,78,0.03)"}}>
-              <td style={{color:"var(--muted2)",fontStyle:"italic"}}>Average</td>
-              {avgPoints.map((p,i)=><td key={i} style={{color:"var(--muted2)"}}>${p.toFixed(2)}</td>)}
-              <td style={{color:"var(--muted2)"}}>${(avgPoints.reduce((a,b)=>a+b,0)/avgPoints.length).toFixed(2)}</td>
-              <td>—</td>
-            </tr>
-          </tbody>
-        </table>
+              </thead>
+              <tbody>
+                {peptide.history.map((h,vi)=>{
+                  const first=h.points[0],last=h.points[h.points.length-1];
+                  const chg=((last-first)/first*100).toFixed(1);
+                  const avg=(h.points.reduce((a,b)=>a+b,0)/h.points.length).toFixed(2);
+                  const col=CHART_COLORS_VIVID[vi%CHART_COLORS_VIVID.length];
+                  return(
+                    <tr key={vi} style={{borderTop:"1px solid rgba(255,255,255,0.05)"}}>
+                      <td style={{padding:"8px 12px",display:"flex",alignItems:"center",gap:8}}>
+                        <div style={{width:10,height:10,borderRadius:"50%",background:col,flexShrink:0}}/>
+                        <span style={{fontFamily:"var(--fh)",fontWeight:700,fontSize:12,color:"#fff"}}>{h.vendor}</span>
+                      </td>
+                      {h.points.map((p,i)=><td key={i} style={{fontFamily:"var(--fm)",fontSize:11,padding:"8px 8px",textAlign:"center",color:"rgba(255,255,255,0.65)"}}>${p.toFixed(2)}</td>)}
+                      <td style={{fontFamily:"var(--fm)",fontSize:11,padding:"8px 12px",textAlign:"right",color:"rgba(255,255,255,0.5)"}}>${avg}</td>
+                      <td style={{fontFamily:"var(--fm)",fontSize:11,padding:"8px 12px",textAlign:"right",fontWeight:700,color:parseFloat(chg)<0?"#00ff9d":"#ff6464"}}>{chg>0?"+":""}{chg}%</td>
+                    </tr>
+                  );
+                })}
+                <tr style={{borderTop:"1px solid rgba(255,255,255,0.08)",background:"rgba(255,255,255,0.02)"}}>
+                  <td style={{padding:"8px 12px",fontFamily:"var(--fm)",fontSize:11,color:"rgba(255,255,255,0.35)",fontStyle:"italic"}}>Average</td>
+                  {avgPoints.map((p,i)=><td key={i} style={{fontFamily:"var(--fm)",fontSize:11,padding:"8px 8px",textAlign:"center",color:"rgba(255,255,255,0.35)"}}>${p.toFixed(2)}</td>)}
+                  <td style={{fontFamily:"var(--fm)",fontSize:11,padding:"8px 12px",textAlign:"right",color:"rgba(255,255,255,0.35)"}}>${(avgPoints.reduce((a,b)=>a+b,0)/avgPoints.length).toFixed(2)}</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {/* Vendor toggle chips */}
+        <div style={{display:"flex",gap:6,flexWrap:"wrap",alignItems:"center"}}>
+          <button onClick={()=>setActiveVendors(activeVendors.size===peptide.history.length?new Set():new Set(peptide.history.map(h=>h.vendor)))}
+            style={{padding:"4px 12px",borderRadius:20,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"var(--fh)",background:"rgba(255,255,255,0.08)",color:"rgba(255,255,255,0.6)",border:"1px solid rgba(255,255,255,0.12)"}}>
+            {activeVendors.size===peptide.history.length?"Deselect All":"Select All"}
+          </button>
+          <div style={{width:1,height:16,background:"rgba(255,255,255,0.1)"}}/>
+          {peptide.history.map((h,vi)=>{
+            const col=CHART_COLORS_VIVID[vi%CHART_COLORS_VIVID.length];
+            const on=activeVendors.has(h.vendor);
+            return(
+              <button key={vi} onClick={()=>toggleVendor(h.vendor)}
+                style={{padding:"4px 10px",borderRadius:20,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"var(--fh)",display:"flex",alignItems:"center",gap:5,background:on?"rgba(255,255,255,0.07)":"rgba(0,0,0,0.2)",color:on?"rgba(255,255,255,0.8)":"rgba(255,255,255,0.25)",border:`1px solid ${on?col:"rgba(255,255,255,0.06)"}`,transition:"all .12s"}}>
+                <div style={{width:8,height:8,borderRadius:"50%",background:on?col:"rgba(255,255,255,0.2)"}}/>
+                {h.vendor}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -726,9 +781,15 @@ function PeptideGroup({p,onAddCart,showToast,isGridView}){
             </div>
             {/* Dose tabs */}
             <div style={{display:"flex",gap:3,flexWrap:"wrap"}}>
-              {p.doses.map(d=>(
-                <button key={d} className={`dtab${dose===d?" on":""}`} onClick={()=>setDose(d)}>{d}</button>
-              ))}
+              {p.doses.map(d=>{
+                const isBest=d===p.doses[0]&&p.bestValuePpm;
+                return(
+                  <button key={d} className={`dtab${dose===d?" on":""}`} onClick={()=>setDose(d)} style={{position:"relative",paddingRight:isBest?26:undefined}}>
+                    {d.replace("★","")}
+                    {isBest&&<span style={{position:"absolute",top:-4,right:-4,background:"var(--teal)",color:"#fff",fontSize:8,fontFamily:"var(--fm)",fontWeight:700,padding:"1px 4px",borderRadius:4,letterSpacing:.3,lineHeight:1.4}}>BEST</span>}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -767,7 +828,15 @@ function PeptideGroup({p,onAddCart,showToast,isGridView}){
         <div className="pg-hdr" onClick={()=>setOpen(o=>!o)}>
           <div className="pg-name">{p.name}</div>
           <div className="pg-doses" onClick={e=>e.stopPropagation()}>
-            {p.doses.map(d=><button key={d} className={`dtab${dose===d?" on":""}`} onClick={()=>setDose(d)}>{d}</button>)}
+            {p.doses.map(d=>{
+              const isBest=d===p.doses[0]&&p.bestValuePpm;
+              return(
+                <button key={d} className={`dtab${dose===d?" on":""}`} onClick={()=>setDose(d)} style={{position:"relative",paddingRight:isBest?26:undefined}}>
+                  {d.replace("★","")}
+                  {isBest&&<span style={{position:"absolute",top:-4,right:-4,background:"var(--teal)",color:"#fff",fontSize:8,fontFamily:"var(--fm)",fontWeight:700,padding:"1px 4px",borderRadius:4,letterSpacing:.3,lineHeight:1.4}}>BEST</span>}
+                </button>
+              );
+            })}
           </div>
           <button className="btn btn-ghost btn-xs" style={{marginLeft:4}} onClick={e=>{e.stopPropagation();setShowHistory(true);}}>📈 History</button>
           <div className="pg-chev">{open?"▲":"▼"}</div>
@@ -1461,7 +1530,7 @@ function FilterDropdown({filterTest,setFilterTest,filterPay,togglePay,filterStoc
   return(
     <div style={{position:"relative"}} ref={ref}>
       <button onClick={()=>setOpen(o=>!o)}
-        style={{display:"flex",alignItems:"center",gap:7,padding:"7px 14px",borderRadius:"var(--r)",border:"1px solid var(--border2)",background:activeFilters>0?"rgba(2,131,145,0.08)":"#fff",cursor:"pointer",fontFamily:"var(--fh)",fontSize:12,fontWeight:600,color:activeFilters>0?"var(--teal)":"var(--navy)",transition:"all .12s",whiteSpace:"nowrap"}}>
+        style={{display:"flex",alignItems:"center",gap:7,padding:"6px 14px",borderRadius:20,border:"1px solid rgba(255,255,255,0.15)",background:activeFilters>0?"rgba(2,131,145,0.3)":"rgba(255,255,255,0.1)",cursor:"pointer",fontFamily:"var(--fh)",fontSize:12,fontWeight:600,color:activeFilters>0?"#fff":"rgba(255,255,255,0.7)",transition:"all .12s",whiteSpace:"nowrap"}}>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 3h12M3 7h8M5 11h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
         Filters
         {activeFilters>0&&<span style={{background:"var(--teal)",color:"#fff",borderRadius:"20px",padding:"1px 7px",fontSize:10,fontFamily:"var(--fm)",fontWeight:700}}>{activeFilters}</span>}
@@ -1581,7 +1650,7 @@ function Admin(){
 }
 
 // ── CMS ADMIN ─────────────────────────────────────────────────────────────────
-function CMS({vendors,setVendors,peptides,setPeptides,onExit}){
+function CMS({vendors,setVendors,peptides,setPeptides,tickerDeals,setTickerDeals,onExit}){
   const[cmsTab,setCmsTab]=useState("vendors");
   const[toast,showToast]=useToast();
 
@@ -1882,7 +1951,25 @@ function CMS({vendors,setVendors,peptides,setPeptides,onExit}){
         {cmsTab==="promos"&&(
           <div>
             <div className="page-title">Promotions & Coupons</div>
-            <div className="page-sub">Quick overview of all active coupons and promotions across vendors. Edit coupons by going to Peptides & Prices → vendor row → Edit.</div>
+            <div className="page-sub">Edit the live deal ticker and manage active coupons across vendors.</div>
+
+            {/* TICKER EDITOR */}
+            <div style={{background:"#fff",border:"1px solid var(--border2)",borderRadius:"var(--r)",overflow:"hidden",marginBottom:20}}>
+              <div style={{padding:"12px 18px",borderBottom:"1px solid var(--border2)",background:"var(--bg2)",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+                <span style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:14,color:"var(--navy)"}}>Live Deal Ticker</span>
+                <button className="btn btn-cyan btn-sm" onClick={()=>setTickerDeals(p=>[...p,"New deal text here"])}>+ Add Deal</button>
+              </div>
+              <div style={{padding:"14px 18px",display:"flex",flexDirection:"column",gap:8}}>
+                {tickerDeals.map((d,i)=>(
+                  <div key={i} style={{display:"flex",gap:8,alignItems:"center"}}>
+                    <span style={{fontFamily:"var(--fm)",fontSize:11,color:"var(--muted2)",minWidth:20}}>#{i+1}</span>
+                    <input className="fi" style={{flex:1}} value={d} onChange={e=>setTickerDeals(p=>p.map((x,xi)=>xi===i?e.target.value:x))}/>
+                    <button className="btn btn-ghost btn-sm" style={{color:"var(--bad)",flexShrink:0}} onClick={()=>setTickerDeals(p=>p.filter((_,xi)=>xi!==i))}>✕</button>
+                  </div>
+                ))}
+                {tickerDeals.length===0&&<div style={{fontSize:12,color:"var(--muted2)",padding:"8px 0"}}>No deals — click + Add Deal to get started.</div>}
+              </div>
+            </div>
             <div style={{background:"var(--bg2)",border:"1px solid var(--border)",borderRadius:"var(--r)",overflow:"hidden",marginBottom:16}}>
               <div className="sb-hdr"><div className="sb-title">Active Coupons</div></div>
               <div className="tbl-wrap"><table className="tbl">
@@ -1944,6 +2031,33 @@ function CMS({vendors,setVendors,peptides,setPeptides,onExit}){
   );
 }
 
+// ── DEAL CAROUSEL ─────────────────────────────────────────────────────────────
+function DealCarousel({deals}){
+  const[idx,setIdx]=useState(0);
+  if(!deals||!deals.length)return null;
+  const prev=()=>setIdx(i=>(i-1+deals.length)%deals.length);
+  const next=()=>setIdx(i=>(i+1)%deals.length);
+  return(
+    <div style={{margin:"0 24px 16px",display:"flex",alignItems:"center",gap:8}}>
+      <button onClick={prev} style={{width:32,height:32,borderRadius:"50%",background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"rgba(255,255,255,0.7)",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,flexShrink:0,transition:"all .12s"}}
+        onMouseEnter={e=>e.currentTarget.style.background="rgba(255,255,255,0.2)"}
+        onMouseLeave={e=>e.currentTarget.style.background="rgba(255,255,255,0.1)"}>‹</button>
+      <div style={{flex:1,background:"linear-gradient(135deg,rgba(2,131,145,0.6),rgba(1,32,78,0.8))",border:"1px solid rgba(2,131,145,0.4)",borderRadius:12,padding:"14px 24px",textAlign:"center",position:"relative",overflow:"hidden"}}>
+        <div style={{position:"absolute",inset:0,background:"radial-gradient(ellipse at 20% 50%,rgba(250,169,104,0.08),transparent 60%)",pointerEvents:"none"}}/>
+        <div style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:15,color:"#fff",letterSpacing:.3}}>{deals[idx]}</div>
+        <div style={{display:"flex",justifyContent:"center",gap:5,marginTop:8}}>
+          {deals.map((_,i)=>(
+            <div key={i} onClick={()=>setIdx(i)} style={{width:i===idx?16:6,height:6,borderRadius:3,background:i===idx?"var(--peach)":"rgba(255,255,255,0.25)",cursor:"pointer",transition:"all .2s"}}/>
+          ))}
+        </div>
+      </div>
+      <button onClick={next} style={{width:32,height:32,borderRadius:"50%",background:"rgba(255,255,255,0.1)",border:"1px solid rgba(255,255,255,0.15)",color:"rgba(255,255,255,0.7)",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,flexShrink:0,transition:"all .12s"}}
+        onMouseEnter={e=>e.currentTarget.style.background="rgba(255,255,255,0.2)"}
+        onMouseLeave={e=>e.currentTarget.style.background="rgba(255,255,255,0.1)"}>›</button>
+    </div>
+  );
+}
+
 // ── MAIN APP ──────────────────────────────────────────────────────────────────
 export default function App(){
   // Secret admin route — access via ?admin in the URL
@@ -1966,6 +2080,7 @@ export default function App(){
   const[showGlobalAlert,setShowGlobalAlert]=useState(false);
   const[cartItems,setCartItems]=useState([]);
   const[toast,showToast]=useToast();
+  const[tickerDeals,setTickerDeals]=useState(["🌸 SPRING SALE — 28% OFF","RESEARCH15 — 15% off PureRawz","SWISS10 — 10% off Swisschems","derek — 10% off FelixChem","peptideprice — 10% off Ion Peptide","LL20 — BOGO 50% Limitless Life"]);
 
   const togglePay=(p)=>setFilterPay(prev=>prev.includes(p)?prev.filter(x=>x!==p):[...prev,p]);
 
@@ -2006,7 +2121,7 @@ export default function App(){
   const featuredVendor=allVendors.reduce((best,v)=>v.disc>=(best?.disc||0)?v:best,null);
 
   // Show CMS if in admin mode — placed after all hooks
-  if(adminMode) return <CMS vendors={vendors} setVendors={setVendors} peptides={peptides} setPeptides={setPeptides} onExit={()=>setAdminMode(false)}/>;
+  if(adminMode) return <CMS vendors={vendors} setVendors={setVendors} peptides={peptides} setPeptides={setPeptides} tickerDeals={tickerDeals} setTickerDeals={setTickerDeals} onExit={()=>setAdminMode(false)}/>;
 
   return(
     <div>
@@ -2050,20 +2165,30 @@ export default function App(){
       </nav>
 
       {tab==="compare"&&(
-        <>
-          <div className="hero">
-            <div className="hero-left">
-              <div className="hero-eyebrow">Research · Compare · Verify</div>
-              <h1>Price meets<br/><em>proof.</em></h1>
-              <div className="hero-sub">Aggregate research peptide prices from verified vendors. Testing scores, live pricing, coupon codes — all in one place. We don't sell anything.</div>
-              <div className="hero-search">
-                <span className="hs-icon">⌕</span>
-                <input placeholder="Search peptides (BPC-157, TB-500, Semax...)..." value={search} onChange={e=>setSearch(e.target.value)}/>
+        <div style={{background:"var(--navy)",minHeight:"100vh",paddingBottom:40}}>
+
+          {/* HERO — transparent on navy bg */}
+          <div className="hero" style={{background:"transparent",border:"none",flexDirection:"column",alignItems:"center",textAlign:"center",gap:20,paddingBottom:28}}>
+            <div style={{width:"100%",maxWidth:700}}>
+              <div className="hero-eyebrow" style={{justifyContent:"center"}}>Research · Compare · Verify</div>
+              <h1 style={{textAlign:"center"}}>Verified prices.<br/><em>Verified vendors.</em></h1>
+              <div className="hero-sub" style={{textAlign:"center",maxWidth:"100%",margin:"0 auto 20px"}}>Aggregate research peptide prices from verified vendors. Testing scores, live pricing, coupon codes — all in one place. We don't sell anything.</div>
+
+              {/* Large centered search */}
+              <div style={{position:"relative",maxWidth:600,margin:"0 auto 20px"}}>
+                <span style={{position:"absolute",left:16,top:"50%",transform:"translateY(-50%)",color:"rgba(255,255,255,0.4)",fontSize:16,pointerEvents:"none"}}>⌕</span>
+                <input value={search} onChange={e=>setSearch(e.target.value)}
+                  placeholder="Search peptides (BPC-157, TB-500, Semax...)..."
+                  style={{width:"100%",background:"rgba(255,255,255,0.08)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:12,padding:"14px 16px 14px 44px",color:"#fff",fontSize:15,fontFamily:"var(--fb)",outline:"none",boxSizing:"border-box",transition:"all .15s"}}
+                  onFocus={e=>e.target.style.border="1px solid rgba(2,131,145,0.6)"}
+                  onBlur={e=>e.target.style.border="1px solid rgba(255,255,255,0.15)"}/>
               </div>
             </div>
-            <div className="hero-right">
+
+            {/* Hero stat pills — now below the content */}
+            <div style={{display:"flex",gap:10,flexWrap:"wrap",justifyContent:"center"}}>
               {[[peptides.length.toString(),"Peptides listed"],[ADMIN_VENDORS.filter(v=>v.status==="approved").length.toString(),"Verified vendors"],[totalDeals.toString(),"Active coupons"],[peptides.filter(p=>p.has30DayLow).length.toString(),"30-day lows"]].map(([v,l])=>(
-                <div key={l} className="hero-stat-pill">
+                <div key={l} className="hero-stat-pill" style={{flexDirection:"row"}}>
                   <span className="hsp-val">{v}</span>
                   <span className="hsp-lbl">{l}</span>
                 </div>
@@ -2071,84 +2196,84 @@ export default function App(){
             </div>
           </div>
 
-          <div className="deal-ticker">
-            <span className="dt-tag">LIVE DEALS</span>
-            {(()=>{
-              const deals=["🌸 SPRING SALE — 28% OFF","RESEARCH15 — 15% off PureRawz","SWISS10 — 10% off Swisschems","derek — 10% off FelixChem","peptideprice — 10% off Ion Peptide","LL20 — BOGO 50% Limitless Life"];
-              const items=[...deals,...deals]; // duplicate for seamless loop
-              return(
-                <div style={{flex:1,overflow:"hidden",position:"relative"}}>
-                  <div className="dt-track">
-                    {items.map((d,i)=><span key={i} className="dt-deal">{d}</span>)}
-                  </div>
-                </div>
-              );
-            })()}
-          </div>
+          {/* DEAL CAROUSEL */}
+          <DealCarousel deals={tickerDeals}/>
 
-          {/* SINGLE COMBINED BAR: Filters | Category Tabs (centered) | View Toggle */}
-          <div style={{background:"#fff",borderBottom:"1px solid var(--border2)",display:"flex",alignItems:"stretch",padding:"0 24px",gap:0,minHeight:46}}>
-            {/* Left — Filters */}
-            <div style={{display:"flex",alignItems:"center",paddingRight:16,borderRight:"1px solid var(--border)"}}>
-              <FilterDropdown
-                filterTest={filterTest} setFilterTest={setFilterTest}
-                filterPay={filterPay} togglePay={togglePay}
-                filterStock={filterStock} setFilterStock={setFilterStock}
-                activeFilters={activeFilters}
-              />
-            </div>
-            {/* Center — Category tabs */}
-            <div style={{flex:1,display:"flex",alignItems:"stretch",justifyContent:"center",overflow:"x-auto"}}>
+          {/* FILTER + CATEGORY + VIEW — dark floating card */}
+          <div style={{margin:"0 24px 8px",borderRadius:12,overflow:"hidden",background:"rgba(255,255,255,0.07)",border:"1px solid rgba(255,255,255,0.1)",boxShadow:"0 2px 12px rgba(1,32,78,0.18)"}}>
+            <div style={{display:"flex",alignItems:"center",justifyContent:"center",padding:"10px 20px",gap:6,flexWrap:"wrap"}}>
+              {/* Filters button */}
+              <div style={{flexShrink:0}}>
+                <FilterDropdown
+                  filterTest={filterTest} setFilterTest={setFilterTest}
+                  filterPay={filterPay} togglePay={togglePay}
+                  filterStock={filterStock} setFilterStock={setFilterStock}
+                  activeFilters={activeFilters}
+                />
+              </div>
+              {/* Divider */}
+              <div style={{width:1,height:20,background:"rgba(255,255,255,0.15)",margin:"0 4px"}}/>
+              {/* Category pills — centered */}
               {CATS.map(c=>(
                 <button key={c} className={`cc${cat===c?" on":""}`} onClick={()=>setCat(c)}>{c}</button>
               ))}
-            </div>
-            {/* Right — View toggle */}
-            <div style={{display:"flex",alignItems:"center",paddingLeft:16,borderLeft:"1px solid var(--border)"}}>
-              <div className="view-btns">
-                <button className={`vbtn${viewMode==="list"?" on":""}`} onClick={()=>setViewMode("list")} title="List view">☰</button>
-                <button className={`vbtn${viewMode==="grid"?" on":""}`} onClick={()=>setViewMode("grid")} title="Grid view">⊞</button>
+              {/* Divider */}
+              <div style={{width:1,height:20,background:"rgba(255,255,255,0.15)",margin:"0 4px"}}/>
+              {/* View toggle */}
+              <div style={{display:"flex",gap:3,flexShrink:0}}>
+                <button className={`vbtn${viewMode==="list"?" on":""}`} style={{background:viewMode==="list"?"var(--teal)":"rgba(255,255,255,0.1)",color:viewMode==="list"?"#fff":"rgba(255,255,255,0.5)",borderRadius:8,border:"1px solid rgba(255,255,255,0.1)"}} onClick={()=>setViewMode("list")}>☰</button>
+                <button className={`vbtn${viewMode==="grid"?" on":""}`} style={{background:viewMode==="grid"?"var(--teal)":"rgba(255,255,255,0.1)",color:viewMode==="grid"?"#fff":"rgba(255,255,255,0.5)",borderRadius:8,border:"1px solid rgba(255,255,255,0.1)"}} onClick={()=>setViewMode("grid")}>⊞</button>
               </div>
             </div>
+            {/* Sort row — centered */}
+            <div style={{borderTop:"1px solid rgba(255,255,255,0.08)",padding:"7px 20px",display:"flex",gap:6,alignItems:"center",justifyContent:"center",flexWrap:"wrap"}}>
+              <span style={{fontSize:10,color:"rgba(255,255,255,0.4)",fontFamily:"var(--fm)",fontWeight:700,letterSpacing:.5}}>SORT:</span>
+              {[["name","Name A–Z"],["name-z","Name Z–A"],["discount","Best Discount"]].map(([k,l])=>(
+                <button key={k} onClick={()=>setSort(k)} style={{padding:"4px 12px",borderRadius:20,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"var(--fh)",transition:"all .12s",background:sort===k?"var(--teal)":"rgba(255,255,255,0.07)",color:sort===k?"#fff":"rgba(255,255,255,0.6)",border:sort===k?"1px solid var(--teal)":"1px solid rgba(255,255,255,0.1)"}}>{l}</button>
+              ))}
+              <button className="btn btn-ghost btn-sm" style={{marginLeft:4,color:"rgba(255,255,255,0.6)",borderColor:"rgba(255,255,255,0.15)"}} onClick={()=>setShowGlobalAlert(true)}>🔔 Price Alerts</button>
+            </div>
           </div>
 
-          {/* Active filter pills + sort row */}
-          <div className="toolbar">
-            <span style={{fontSize:10,color:"var(--muted2)",fontFamily:"var(--fm)",fontWeight:700,letterSpacing:.5}}>SORT:</span>
-            {[["name","Name A–Z"],["name-z","Name Z–A"],["discount","Best Discount"]].map(([k,l])=>(
-              <button key={k} className={`sort-btn${sort===k?" on":""}`} onClick={()=>setSort(k)}>{l}</button>
-            ))}
-            <button className="btn btn-ghost btn-sm" style={{marginLeft:4}} onClick={()=>setShowGlobalAlert(true)}>🔔 Price Alerts</button>
-          </div>
+          {/* MAIN CONTENT — padded container on navy */}
+          <div style={{maxWidth:1560,margin:"0 auto",padding:"0 24px"}}>
 
-          <div className="page">
-            <div className="stats-row">
-              <div className="stat"><div className="stat-l">Peptides Listed</div><div className="stat-v b">{peptides.length}</div></div>
-              <div className="stat"><div className="stat-l">Active Vendors</div><div className="stat-v">{ADMIN_VENDORS.filter(v=>v.status==="approved").length}</div></div>
-              <div className="stat"><div className="stat-l">Active Coupons</div><div className="stat-v o">{totalDeals}</div></div>
-              <div className="stat"><div className="stat-l">30-Day Lows</div><div className="stat-v g">{peptides.filter(p=>p.has30DayLow).length}</div></div>
-              <div className="stat"><div className="stat-l">Full 7/7 Tested</div><div className="stat-v g">{peptides.reduce((s,p)=>s+p.vendors.filter(v=>v.tests.pass.length===7).length,0)}</div></div>
+            {/* STATS ROW — floating white card */}
+            <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:0,marginBottom:16,border:"1px solid rgba(255,255,255,0.1)",borderRadius:12,overflow:"hidden",boxShadow:"0 2px 12px rgba(1,32,78,0.2)"}}>
+              {[["Peptides Listed",peptides.length,"b"],["Active Vendors",ADMIN_VENDORS.filter(v=>v.status==="approved").length,""],["Active Coupons",totalDeals,"o"],["30-Day Lows",peptides.filter(p=>p.has30DayLow).length,"g"],["Full 7/7 Tested",peptides.reduce((s,p)=>s+p.vendors.filter(v=>v.tests.pass.length===7).length,0),"g"]].map(([label,val,cls],i,arr)=>(
+                <div key={label} style={{background:"rgba(255,255,255,0.06)",padding:"14px 18px",borderRight:i<arr.length-1?"1px solid rgba(255,255,255,0.08)":"none"}}>
+                  <div style={{fontSize:9,fontFamily:"var(--fm)",fontWeight:700,color:"rgba(255,255,255,0.45)",textTransform:"uppercase",letterSpacing:1,marginBottom:6}}>{label}</div>
+                  <div style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:26,color:cls==="b"?"var(--teal)":cls==="o"?"var(--peach)":cls==="g"?"var(--teal)":"#fff"}}>{val}</div>
+                </div>
+              ))}
             </div>
 
-            {/* FEATURED DEAL OF THE DAY */}
+            {/* FEATURED DEAL — glowing card on navy */}
             {featuredVendor&&(
-              <div className="featured-deal">
-                <div>
+              <div style={{background:"rgba(255,255,255,0.07)",border:"1px solid rgba(2,131,145,0.4)",borderRadius:14,padding:"18px 24px",marginBottom:16,display:"flex",alignItems:"center",gap:16,backdropFilter:"blur(2px)"}}>
+                {/* Left — deal info */}
+                <div style={{flex:1,minWidth:0}}>
                   <div className="fd-tag">⭐ BEST DEAL OF THE DAY</div>
-                  <div className="fd-name">{featuredVendor.peptideName} — {featuredVendor.name}</div>
+                  <div className="fd-name" style={{color:"#fff"}}>{featuredVendor.peptideName} — {featuredVendor.name}</div>
                   <div className="fd-detail">{featuredVendor.coupon&&`Use code: ${featuredVendor.coupon} · `}{featuredVendor.ppm&&`$${featuredVendor.ppm.toFixed(2)}/mg · `}{featuredVendor.shipping}</div>
                 </div>
-                <div className="fd-price-col">
+                {/* Right — price */}
+                <div style={{textAlign:"right",flexShrink:0,marginLeft:"auto"}}>
                   {featuredVendor.origPrice&&<div className="fd-orig">${featuredVendor.origPrice.toFixed(2)}</div>}
                   <div className="fd-price">${featuredVendor.price.toFixed(2)}</div>
                   <div className="fd-save">−{featuredVendor.disc}% · save ${(featuredVendor.origPrice-featuredVendor.price).toFixed(2)}</div>
                 </div>
-                <button className="btn btn-green btn-sm" onClick={()=>alert("Visiting "+featuredVendor.name)}>Shop Now →</button>
+                <button className="btn btn-green btn-sm" style={{flexShrink:0}} onClick={()=>alert("Visiting "+featuredVendor.name)}>Shop Now →</button>
               </div>
             )}
 
+            {/* PEPTIDE LISTINGS */}
             {filtered.length===0
-              ?<div className="empty"><div style={{fontSize:34,marginBottom:10}}>🔬</div><div>No results match your filters.</div><button className="btn btn-ghost btn-sm" style={{marginTop:10}} onClick={()=>{setFilterTest("Any");setFilterPay([]);setFilterStock(false);setSearch("");}}>Clear all filters</button></div>
+              ?<div style={{textAlign:"center",padding:"60px 20px",color:"rgba(255,255,255,0.5)",fontFamily:"var(--fh)"}}>
+                <div style={{fontSize:34,marginBottom:10}}>🔬</div>
+                <div>No results match your filters.</div>
+                <button className="btn btn-ghost btn-sm" style={{marginTop:10,borderColor:"rgba(255,255,255,0.2)",color:"rgba(255,255,255,0.7)"}} onClick={()=>{setFilterTest("Any");setFilterPay([]);setFilterStock(false);setSearch("");}}>Clear all filters</button>
+              </div>
               : viewMode==="grid"
                 ? <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(380px,1fr))",gap:12,alignItems:"start"}}>
                     {filtered.map(p=><PeptideGroup key={p.id} p={p} onAddCart={addToCart} showToast={showToast} isGridView={true}/>)}
@@ -2156,7 +2281,7 @@ export default function App(){
                 : filtered.map(p=><PeptideGroup key={p.id} p={p} onAddCart={addToCart} showToast={showToast} isGridView={false}/>)
             }
           </div>
-        </>
+        </div>
       )}
 
       {tab==="vendors"&&<div className="page"><VendorInfoPage vendors={vendors}/></div>}
