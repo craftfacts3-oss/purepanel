@@ -1649,9 +1649,142 @@ function Admin(){
   );
 }
 
+// ── RESEARCH CMS ──────────────────────────────────────────────────────────────
+function ResearchCMS(){
+  const[entries,setEntries]=useState(RESEARCH_DATA);
+  const[search,setSearch]=useState("");
+  const[catF,setCatF]=useState("All");
+  const[editing,setEditing]=useState(null);
+  const cats=["All",...new Set(RESEARCH_DATA.map(r=>r.category))];
+  const filtered=entries.filter(r=>{
+    if(catF!=="All"&&r.category!==catF)return false;
+    if(search&&!r.name.toLowerCase().includes(search.toLowerCase()))return false;
+    return true;
+  });
+  const emptyEntry=()=>({id:Date.now(),name:"",fullName:"",category:"Peptides",tags:[],summary:"",mechanism:"",startingDose:{amount:"",unit:"mcg",frequency:"Once daily",form:"Subcutaneous injection"},commonDoses:[""],cycleLength:"",titration:"",halfLife:"",storage:"",benefits:[""],risks:[""],avoidWith:[""],sideEffects:[""],note:"For research purposes only. Not medical advice.",icon:"🔬"});
+  const save=(entry)=>{setEntries(prev=>prev.find(x=>x.id===entry.id)?prev.map(x=>x.id===entry.id?entry:x):[...prev,entry]);setEditing(null);};
+  const del=(id)=>{if(window.confirm("Delete this entry?"))setEntries(prev=>prev.filter(x=>x.id!==id));};
+
+  if(editing){
+    const isNew=editing==="new";
+    const EditForm=()=>{
+      const[f,setF]=useState(isNew?emptyEntry():editing);
+      const sf=(k,v)=>setF(p=>({...p,[k]:v}));
+      const sfDose=(k,v)=>setF(p=>({...p,startingDose:{...p.startingDose,[k]:v}}));
+      const arrSet=(k,i,v)=>setF(p=>({...p,[k]:p[k].map((x,xi)=>xi===i?v:x)}));
+      const arrAdd=(k)=>setF(p=>({...p,[k]:[...p[k],""]}));
+      const arrDel=(k,i)=>setF(p=>({...p,[k]:p[k].filter((_,xi)=>xi!==i)}));
+      return(
+        <div>
+          <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:20}}>
+            <button className="btn btn-ghost btn-sm" onClick={()=>setEditing(null)}>← Back to List</button>
+            <div className="page-title" style={{margin:0}}>{isNew?"New Research Entry":`Editing: ${f.name||"Untitled"}`}</div>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:12}}>
+            <div><label className="flabel">Name *</label><input className="fi" value={f.name} onChange={e=>sf("name",e.target.value)} placeholder="BPC-157"/></div>
+            <div><label className="flabel">Full Name</label><input className="fi" value={f.fullName} onChange={e=>sf("fullName",e.target.value)} placeholder="Body Protection Compound-157"/></div>
+          </div>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12,marginBottom:12}}>
+            <div><label className="flabel">Category</label>
+              <select className="fsel" value={f.category} onChange={e=>sf("category",e.target.value)}>
+                {["GLP Agonists","Peptides","Nasal Sprays","Capsules","Supplies","Amino Blends"].map(c=><option key={c}>{c}</option>)}
+              </select>
+            </div>
+            <div><label className="flabel">Icon</label><input className="fi" value={f.icon} onChange={e=>sf("icon",e.target.value)} placeholder="🔬"/></div>
+            <div><label className="flabel">Tags (comma separated)</label><input className="fi" value={f.tags.join(", ")} onChange={e=>sf("tags",e.target.value.split(",").map(x=>x.trim()).filter(Boolean))} placeholder="Recovery, Anti-inflammatory"/></div>
+          </div>
+          <div style={{marginBottom:12}}><label className="flabel">Summary *</label><textarea className="fi" rows={3} value={f.summary} onChange={e=>sf("summary",e.target.value)} placeholder="Brief overview..."/></div>
+          <div style={{marginBottom:12}}><label className="flabel">Mechanism of Action</label><textarea className="fi" rows={3} value={f.mechanism} onChange={e=>sf("mechanism",e.target.value)} placeholder="How it works..."/></div>
+          <div style={{background:"var(--bg2)",border:"1px solid var(--border)",borderRadius:"var(--r)",padding:12,marginBottom:12}}>
+            <div className="fs-title">Starting Dose</div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}}>
+              <div><label className="flabel">Amount</label><input className="fi" value={f.startingDose.amount} onChange={e=>sfDose("amount",e.target.value)} placeholder="250"/></div>
+              <div><label className="flabel">Unit</label><input className="fi" value={f.startingDose.unit} onChange={e=>sfDose("unit",e.target.value)} placeholder="mcg"/></div>
+              <div><label className="flabel">Frequency</label><input className="fi" value={f.startingDose.frequency} onChange={e=>sfDose("frequency",e.target.value)} placeholder="Once daily"/></div>
+              <div><label className="flabel">Form</label><input className="fi" value={f.startingDose.form} onChange={e=>sfDose("form",e.target.value)} placeholder="SubQ injection"/></div>
+            </div>
+          </div>
+          {[["commonDoses","Common Dose Ranges","250 mcg/day (conservative)"],["benefits","Benefits / Research Findings","Tissue repair"],["risks","Risks","Not FDA-approved"],["avoidWith","Do Not Combine With","NSAIDs"],["sideEffects","Side Effects","Nausea at higher doses"]].map(([key,label,ph])=>(
+            <div key={key} style={{background:"var(--bg2)",border:"1px solid var(--border)",borderRadius:"var(--r)",padding:12,marginBottom:10}}>
+              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:6}}>
+                <div className="fs-title" style={{marginBottom:0}}>{label}</div>
+                <button className="btn btn-ghost btn-xs" onClick={()=>arrAdd(key)}>+ Add</button>
+              </div>
+              {f[key].map((item,i)=>(
+                <div key={i} style={{display:"flex",gap:6,marginBottom:5}}>
+                  <input className="fi" style={{flex:1}} value={item} onChange={e=>arrSet(key,i,e.target.value)} placeholder={ph}/>
+                  <button className="btn btn-ghost btn-xs" style={{color:"var(--bad)"}} onClick={()=>arrDel(key,i)}>✕</button>
+                </div>
+              ))}
+            </div>
+          ))}
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:12}}>
+            <div><label className="flabel">Cycle Length</label><input className="fi" value={f.cycleLength} onChange={e=>sf("cycleLength",e.target.value)} placeholder="4–12 weeks"/></div>
+            <div><label className="flabel">Half-Life</label><input className="fi" value={f.halfLife} onChange={e=>sf("halfLife",e.target.value)} placeholder="~2 hours"/></div>
+            <div><label className="flabel">Titration (optional)</label><input className="fi" value={f.titration||""} onChange={e=>sf("titration",e.target.value)} placeholder="Start low, increase every 4 weeks"/></div>
+            <div><label className="flabel">Storage</label><input className="fi" value={f.storage} onChange={e=>sf("storage",e.target.value)} placeholder="Refrigerate. Use within 28 days."/></div>
+          </div>
+          <div style={{marginBottom:20}}><label className="flabel">Research Note / Disclaimer</label><input className="fi" value={f.note} onChange={e=>sf("note",e.target.value)}/></div>
+          <div style={{display:"flex",gap:8,justifyContent:"flex-end"}}>
+            <button className="btn btn-ghost" onClick={()=>setEditing(null)}>Cancel</button>
+            <button className="btn btn-cyan" onClick={()=>{if(!f.name){alert("Name required.");return;}save(f);}}>Save Entry</button>
+          </div>
+        </div>
+      );
+    };
+    return <EditForm/>;
+  }
+
+  return(
+    <div>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:18,flexWrap:"wrap",gap:12}}>
+        <div>
+          <div className="page-title">Research Library</div>
+          <div className="page-sub">Add, edit, or remove entries from the public Research page. {entries.length} total entries.</div>
+        </div>
+        <button className="btn btn-cyan" onClick={()=>setEditing("new")}>+ Add Entry</button>
+      </div>
+      <div style={{display:"flex",gap:8,marginBottom:16,flexWrap:"wrap",alignItems:"center"}}>
+        <input className="fi" style={{maxWidth:260}} value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search by name..."/>
+        <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+          {cats.map(c=><button key={c} className={`fchip${catF===c?" on":""}`} onClick={()=>setCatF(c)}>{c}</button>)}
+        </div>
+      </div>
+      <div style={{background:"#fff",border:"1px solid var(--border2)",borderRadius:"var(--r)",overflow:"hidden"}}>
+        <div className="tbl-wrap">
+          <table className="tbl">
+            <thead>
+              <tr><th>Icon</th><th>Name</th><th>Category</th><th>Tags</th><th>Start Dose</th><th>Cycle</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+              {filtered.map(r=>(
+                <tr key={r.id}>
+                  <td style={{fontSize:20,textAlign:"center"}}>{r.icon}</td>
+                  <td>
+                    <div style={{fontFamily:"var(--fh)",fontWeight:700,fontSize:13,color:"var(--navy)"}}>{r.name}</div>
+                    <div style={{fontSize:10,color:"var(--muted2)",marginTop:1}}>{r.fullName}</div>
+                  </td>
+                  <td><span style={{fontSize:10,fontFamily:"var(--fm)",fontWeight:700,padding:"2px 7px",borderRadius:3,background:"rgba(2,131,145,0.07)",color:"var(--teal)"}}>{r.category}</span></td>
+                  <td><div style={{display:"flex",gap:3,flexWrap:"wrap"}}>{r.tags.slice(0,3).map(t=><span key={t} style={{fontSize:9,fontFamily:"var(--fm)",fontWeight:700,padding:"1px 5px",borderRadius:2,background:"rgba(1,32,78,0.06)",color:"var(--navy)"}}>{t}</span>)}</div></td>
+                  <td style={{fontFamily:"var(--fm)",fontSize:11,color:"var(--teal)",fontWeight:700}}>{r.startingDose.amount} {r.startingDose.unit}</td>
+                  <td style={{fontFamily:"var(--fm)",fontSize:11,color:"var(--muted2)"}}>{r.cycleLength?.split(",")[0]?.trim()?.substring(0,30)}</td>
+                  <td><div style={{display:"flex",gap:4}}>
+                    <button className="btn btn-ghost btn-xs" onClick={()=>setEditing(r)}>Edit</button>
+                    <button className="btn btn-xs btn-danger" onClick={()=>del(r.id)}>Delete</button>
+                  </div></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── CMS ADMIN ─────────────────────────────────────────────────────────────────
 function CMS({vendors,setVendors,peptides,setPeptides,tickerDeals,setTickerDeals,onExit}){
-  const[cmsTab,setCmsTab]=useState("vendors");
+  const[cmsTab,setCmsTab]=useState("dashboard");
   const[toast,showToast]=useToast();
 
   // ── Vendor CMS ──
@@ -1815,7 +1948,7 @@ function CMS({vendors,setVendors,peptides,setPeptides,tickerDeals,setTickerDeals
           <div className="logo"><svg width="32" height="32" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" rx="18" fill="#01204e"/><ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="#028391" strokeWidth="2" opacity="0.9"/><ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="#028391" strokeWidth="2" opacity="0.9" transform="rotate(60 50 50)"/><ellipse cx="50" cy="50" rx="34" ry="13" fill="none" stroke="#028391" strokeWidth="2" opacity="0.9" transform="rotate(120 50 50)"/><circle cx="50" cy="50" r="8" fill="#028391"/><circle cx="50" cy="50" r="4.5" fill="#f6dcac"/><circle cx="84" cy="50" r="4.5" fill="#faa968"/><circle cx="33" cy="21" r="4.5" fill="#faa968"/><circle cx="33" cy="79" r="4.5" fill="#faa968"/></svg><span style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:17,letterSpacing:"-.4px"}}><span className="logo-bio">Biosafe</span><span className="logo-hub"> Hub</span></span><span style={{fontSize:11,color:"var(--bad)",fontFamily:"var(--fm)",fontWeight:700,marginLeft:6}}>ADMIN</span></div>
         </div>
         <div style={{display:"flex",gap:2,background:"rgba(255,255,255,0.04)",border:"1px solid var(--border)",borderRadius:"var(--r2)",padding:3}}>
-          {[["vendors","Vendors"],["peptides","Peptides & Prices"],["promos","Promotions"],["standards","Testing Page"],["apps","Applications"]].map(([k,l])=>(
+          {[["dashboard","🏠 Dashboard"],["vendors","Vendors"],["peptides","Peptides & Prices"],["promos","Promotions"],["standards","Testing Page"],["research","Research Library"],["apps","Applications"]].map(([k,l])=>(
             <button key={k} className={`nl${cmsTab===k?" on":""}`} onClick={()=>setCmsTab(k)}>{l}</button>
           ))}
         </div>
@@ -1823,6 +1956,96 @@ function CMS({vendors,setVendors,peptides,setPeptides,tickerDeals,setTickerDeals
       </div>
 
       <div className="page">
+        {/* ── DASHBOARD TAB ── */}
+        {cmsTab==="dashboard"&&(
+          <div>
+            {/* Welcome header */}
+            <div style={{background:"var(--navy)",borderRadius:"var(--r)",padding:"24px 28px",marginBottom:20,display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:12}}>
+              <div>
+                <div style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:22,color:"#fff",marginBottom:4}}>Welcome back 👋</div>
+                <div style={{fontSize:13,color:"rgba(255,255,255,0.5)"}}>Biosafe Hub Admin Dashboard — manage your entire platform from here.</div>
+              </div>
+              <button className="btn btn-cyan" onClick={onExit}>← View Live Site</button>
+            </div>
+
+            {/* Stats grid */}
+            <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12,marginBottom:20}}>
+              {[
+                ["🧬","Peptides Listed",peptides.length,"var(--teal)","rgba(2,131,145,0.08)"],
+                ["🏪","Active Vendors",vendors.filter(v=>v.status==="approved").length,"var(--navy)","rgba(1,32,78,0.06)"],
+                ["🏷","Active Coupons",peptides.flatMap(p=>p.vendors).filter(v=>v.coupon).length,"#b86a10","rgba(250,169,104,0.08)"],
+                ["⏳","Pending Applications",ADMIN_VENDORS.filter(v=>v.status==="pending").length,"var(--orange)","rgba(248,85,37,0.06)"],
+              ].map(([icon,label,val,color,bg])=>(
+                <div key={label} style={{background:"#fff",border:"1px solid var(--border2)",borderRadius:"var(--r)",padding:"18px 20px",boxShadow:"0 1px 4px rgba(1,32,78,0.06)"}}>
+                  <div style={{fontSize:24,marginBottom:8}}>{icon}</div>
+                  <div style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:28,color,marginBottom:4}}>{val}</div>
+                  <div style={{fontSize:12,color:"var(--muted2)",fontFamily:"var(--fm)"}}>{label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Quick actions */}
+            <div style={{marginBottom:20}}>
+              <div style={{fontFamily:"var(--fh)",fontWeight:700,fontSize:14,color:"var(--navy)",marginBottom:12}}>Quick Actions</div>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10}}>
+                {[
+                  ["➕","Add New Peptide","Add a peptide and vendor listings","vendors",()=>setCmsTab("peptides")],
+                  ["🏪","Manage Vendors","Edit vendor info, testing scores, and shipping","vendors",()=>setCmsTab("vendors")],
+                  ["🏷","Edit Deal Ticker","Update the live promotions carousel","promos",()=>setCmsTab("promos")],
+                  ["📊","View Promotions","See all active coupons at a glance","promos",()=>setCmsTab("promos")],
+                  ["🧪","Testing Page","Update the 7-point testing standards","standards",()=>setCmsTab("standards")],
+                  ["📋","Applications","Review vendor applications","apps",()=>setCmsTab("apps")],
+                ].map(([icon,title,desc,,action])=>(
+                  <div key={title} onClick={action} style={{background:"#fff",border:"1px solid var(--border2)",borderRadius:"var(--r)",padding:"16px 18px",cursor:"pointer",transition:"all .14s",boxShadow:"0 1px 4px rgba(1,32,78,0.05)"}}
+                    onMouseEnter={e=>{e.currentTarget.style.borderColor="var(--teal)";e.currentTarget.style.transform="translateY(-1px)";}}
+                    onMouseLeave={e=>{e.currentTarget.style.borderColor="";e.currentTarget.style.transform="";}}>
+                    <div style={{fontSize:22,marginBottom:8}}>{icon}</div>
+                    <div style={{fontFamily:"var(--fh)",fontWeight:700,fontSize:13,color:"var(--navy)",marginBottom:4}}>{title}</div>
+                    <div style={{fontSize:11,color:"var(--muted2)",lineHeight:1.5}}>{desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Peptide overview table */}
+            <div style={{background:"#fff",border:"1px solid var(--border2)",borderRadius:"var(--r)",overflow:"hidden",marginBottom:20}}>
+              <div style={{padding:"12px 18px",borderBottom:"1px solid var(--border2)",background:"var(--bg2)",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+                <span style={{fontFamily:"var(--fh)",fontWeight:800,fontSize:14,color:"var(--navy)"}}>Peptide Overview</span>
+                <button className="btn btn-cyan btn-sm" onClick={()=>setCmsTab("peptides")}>Manage All →</button>
+              </div>
+              <div className="tbl-wrap">
+                <table className="tbl">
+                  <thead><tr><th>Peptide</th><th>Category</th><th>Vendors</th><th>Best $/mg</th><th>30-Day Low</th><th>Coupons</th></tr></thead>
+                  <tbody>{peptides.map(p=>(
+                    <tr key={p.id}>
+                      <td><strong style={{fontFamily:"var(--fh)",fontSize:13,color:"var(--navy)"}}>{p.name}</strong></td>
+                      <td><span style={{fontSize:10,fontFamily:"var(--fm)",fontWeight:700,padding:"2px 7px",borderRadius:3,background:"rgba(2,131,145,0.07)",color:"var(--teal)"}}>{p.category}</span></td>
+                      <td style={{fontFamily:"var(--fm)",fontSize:12}}>{p.vendors.length}</td>
+                      <td style={{fontFamily:"var(--fm)",fontSize:12,color:"var(--teal)",fontWeight:700}}>{p.bestValuePpm?`$${p.bestValuePpm.toFixed(2)}`:"—"}</td>
+                      <td>{p.has30DayLow?<span style={{fontSize:10,fontFamily:"var(--fm)",fontWeight:700,color:"var(--teal)",background:"rgba(2,131,145,0.08)",padding:"2px 7px",borderRadius:3}}>Active</span>:<span style={{fontSize:10,color:"var(--muted2)"}}>—</span>}</td>
+                      <td style={{fontFamily:"var(--fm)",fontSize:12}}>{p.vendors.filter(v=>v.coupon).length}</td>
+                    </tr>
+                  ))}</tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Pending applications alert */}
+            {ADMIN_VENDORS.filter(v=>v.status==="pending").length>0&&(
+              <div style={{background:"rgba(248,85,37,0.05)",border:"1px solid rgba(248,85,37,0.2)",borderRadius:"var(--r)",padding:"14px 18px",display:"flex",alignItems:"center",justifyContent:"space-between",gap:12}}>
+                <div style={{display:"flex",gap:10,alignItems:"center"}}>
+                  <span style={{fontSize:20}}>⏳</span>
+                  <div>
+                    <div style={{fontFamily:"var(--fh)",fontWeight:700,fontSize:13,color:"var(--bad)"}}>Pending Applications</div>
+                    <div style={{fontSize:12,color:"var(--muted2)"}}>{ADMIN_VENDORS.filter(v=>v.status==="pending").length} vendor application{ADMIN_VENDORS.filter(v=>v.status==="pending").length>1?"s":""} waiting for review</div>
+                  </div>
+                </div>
+                <button className="btn btn-sm" style={{background:"var(--bad)",color:"#fff",border:"none"}} onClick={()=>setCmsTab("apps")}>Review Now →</button>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* ── VENDORS TAB ── */}
         {cmsTab==="vendors"&&(
           <div>
@@ -2026,6 +2249,9 @@ function CMS({vendors,setVendors,peptides,setPeptides,tickerDeals,setTickerDeals
             <button className="btn btn-cyan" style={{marginTop:24}} onClick={onExit}>← Go to Testing Page</button>
           </div>
         )}
+
+        {/* ── RESEARCH LIBRARY TAB ── */}
+        {cmsTab==="research"&&<ResearchCMS/>}
       </div>
     </div>
   );
